@@ -1,10 +1,7 @@
 <template>
   <v-layout column>
     <h2>Total de artigos por IF</h2>
-    <ve-histogram
-      :data="chartData"
-      :settings="chartSettings"
-    />
+    <ve-histogram :data="chartData" />
   </v-layout>
 </template>
 
