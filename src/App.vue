@@ -8,7 +8,7 @@
     </v-app-bar>
 
     <v-content>
-      <v-router />
+      <router-view />
     </v-content>
   </v-app>
 </template>
