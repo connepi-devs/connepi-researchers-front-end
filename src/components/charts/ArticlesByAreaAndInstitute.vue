@@ -1,8 +1,11 @@
 <template>
-  <ve-histogram
-    :data="chartData"
-    :settings="chartSettings"
-  />
+  <v-layout column align-center>
+    <h2>Total de artigos por área por IF</h2>
+    <ve-histogram
+      :data="chartData"
+      :settings="chartSettings"
+    />
+  </v-layout>
 </template>
 
 <script>
