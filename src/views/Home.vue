@@ -1,7 +1,12 @@
 <template>
-  <v-container>
+  <v-container grid-list-lg>
     <v-layout column>
-      <articles-by-area-and-institute />
+      <v-layout>
+        <v-flex xs6>
+          <researchers-ranking />
+        </v-flex>
+      </v-layout>
+      <articles-by-area-by-institute-by-year />
       <articles-by-institute />
       <articles-by-area-by-year />
     </v-layout>
@@ -9,16 +14,18 @@
 </template>
 
 <script>
-import ArticlesByAreaAndInstitute from '@/components/charts/ArticlesByAreaAndInstitute.vue';
+import ArticlesByAreaByInstituteByYear from '@/components/charts/ArticlesByAreaByInstituteByYear.vue';
 import ArticlesByAreaByYear from '@/components/charts/ArticlesByAreaByYear.vue';
 import ArticlesByInstitute from '@/components/charts/ArticlesByInstitute.vue';
+import ResearchersRanking from '@/components/tables/ResearchersRanking.vue';
 
 export default {
   name: 'Home',
   components: {
-    ArticlesByAreaAndInstitute,
+    ArticlesByAreaByInstituteByYear,
     ArticlesByAreaByYear,
     ArticlesByInstitute,
+    ResearchersRanking,
   },
 };
 </script>
