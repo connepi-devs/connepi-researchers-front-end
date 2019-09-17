@@ -1,29 +1,24 @@
 <template>
   <v-layout column>
     <h2>Total de artigos por Área</h2>
-    <ve-histogram :data="chartData" />
+    <ve-pie :data="chartData" :legend-visible="false" />
   </v-layout>
 </template>
 
 <script>
-import rows from '@/data/articles-by-institute.json';
+import rows from '@/data/projects-by-area.json';
 
 export default {
   name: 'ArticlesByInstitute',
   data() {
+    this.chartSettings = {
+      legend: {
+        show: false,
+      },
+    };
     return {
       chartData: {
-        columns: [
-          'Ciências Exatas e da Terra',
-          'Ciências Biológicas',
-          'Engenharias',
-          'Ciências da Saúde',
-          'Ciências Agrárias',
-          'Ciências Sociais Aplicadas',
-          'Ciências Humanas',
-          'Linguística, Letras e Artes',
-          'Outros',
-        ],
+        columns: ['areaDoConhecimento', 'total'],
         rows,
       },
     };
