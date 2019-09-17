@@ -3,6 +3,9 @@
     <v-layout column>
       <v-layout>
         <v-flex xs6>
+          <projects-by-area />
+        </v-flex>
+        <v-flex xs6>
           <researchers-ranking />
         </v-flex>
       </v-layout>
@@ -17,6 +20,7 @@
 import ArticlesByAreaByInstituteByYear from '@/components/charts/ArticlesByAreaByInstituteByYear.vue';
 import ArticlesByAreaByYear from '@/components/charts/ArticlesByAreaByYear.vue';
 import ArticlesByInstitute from '@/components/charts/ArticlesByInstitute.vue';
+import ProjectsByArea from '@/components/charts/ProjectsByArea.vue';
 import ResearchersRanking from '@/components/tables/ResearchersRanking.vue';
 
 export default {
@@ -25,6 +29,7 @@ export default {
     ArticlesByAreaByInstituteByYear,
     ArticlesByAreaByYear,
     ArticlesByInstitute,
+    ProjectsByArea,
     ResearchersRanking,
   },
 };
