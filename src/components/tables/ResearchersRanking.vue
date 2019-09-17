@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import data from '@/data/researchers-ranking';
+import data from '@/data/researchers-ranking.json';
 
 export default {
   name: 'ResearchersRanking',
@@ -19,11 +19,26 @@ export default {
     return {
       data,
       headers: [
-        { text: '', align: 'left', sortable: false, value: 'posicao' },
-        { text: 'Nome', align: 'left', sortable: false, value: 'nome' },
-        { text: 'Projetos', align: 'left', sortable: false, value: 'projetos' },
+        {
+          text: '',
+          align: 'left',
+          sortable: false,
+          value: 'posicao',
+        },
+        {
+          text: 'Nome',
+          align: 'left',
+          sortable: false,
+          value: 'nome',
+        },
+        {
+          text: 'Projetos',
+          align: 'left',
+          sortable: false,
+          value: 'projetos',
+        },
       ],
     };
   },
-}
+};
 </script>
