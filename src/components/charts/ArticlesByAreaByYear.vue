@@ -1,7 +1,7 @@
 <template>
   <v-layout column align-center>
     <h2>Total de artigos por área por ano</h2>
-    <ve-line :data="chartData" />
+    <ve-line :data="chartData" :settings="chartSettings" />
   </v-layout>
 </template>
 
