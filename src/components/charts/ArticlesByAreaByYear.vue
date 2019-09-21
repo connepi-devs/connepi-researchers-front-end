@@ -1,8 +1,14 @@
 <template>
-  <v-layout column>
-    <h2>Total de artigos por área por ano</h2>
-    <ve-line :data="chartData" />
-  </v-layout>
+  <v-card class="my-2" elevation="0">
+    <v-card-text>
+      <v-container>
+        <v-layout column>
+          <h2 class="mt-2 mb-4">Total de artigos por área por ano</h2>
+          <ve-line :data="chartData" />
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
