@@ -1,5 +1,5 @@
 <template>
-  <v-layout column align-center>
+  <v-layout column>
     <h2>Total de artigos por área por IF</h2>
     <ve-histogram
       :data="chartData"
@@ -12,7 +12,7 @@
 import rows from '@/data/articles-by-area-and-institute.json';
 
 export default {
-  name: 'ArticlesByAreaAndInstitute',
+  name: 'ArticlesByAreaByInstituteByYear',
   data() {
     this.chartSettings = {
       metrics: [
