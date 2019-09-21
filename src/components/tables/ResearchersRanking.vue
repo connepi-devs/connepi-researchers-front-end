@@ -5,7 +5,7 @@
       :items="data"
       item-text="nome"
       :headers="headers"
-      items-per-page="5"
+      :items-per-page="5"
     />
   </v-layout>
 </template>
