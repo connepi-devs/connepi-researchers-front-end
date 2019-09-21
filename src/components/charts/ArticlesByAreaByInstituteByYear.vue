@@ -1,11 +1,19 @@
 <template>
-  <v-layout column>
-    <h2>Total de artigos por área por IF</h2>
-    <ve-histogram
-      :data="chartData"
-      :settings="chartSettings"
-    />
-  </v-layout>
+  <v-card elevation="0" class="my-2">
+    <v-card-text>
+      <v-container>
+        <v-layout column>
+          <v-layout class="mt-2 mb-4" align-end>
+            <h2>Total de artigos por área por IF</h2>
+          </v-layout>
+          <ve-histogram
+            :data="chartData"
+            :settings="chartSettings"
+          />
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
