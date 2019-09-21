@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app>
+    <v-app-bar dark color="blue darken-3" app>
       <v-toolbar-title class="headline text-uppercase">
         <span>Dashboard TCC Arthur e Otacílio</span>
       </v-toolbar-title>
