@@ -5,10 +5,10 @@
       <cards />
       <!-- Charts and Tables -->
       <v-layout>
-        <v-flex xs6>
+        <v-flex xs5>
           <projects-by-area />
         </v-flex>
-        <v-flex xs6>
+        <v-flex xs7>
           <researchers-ranking />
         </v-flex>
       </v-layout>
