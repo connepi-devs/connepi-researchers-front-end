@@ -3,7 +3,7 @@ import { axiosInstance } from './axios-instance';
 const axios = axiosInstance;
 
 export default {
-  get() {
-    return axios.get('/instituicoes');
+  get(queryParams) {
+    return axios.get(`/instituicoes?${queryParams}`);
   },
 };
