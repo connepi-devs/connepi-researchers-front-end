@@ -16,8 +16,9 @@
 </template>
 
 <script>
-import dashboardService from '@/services/dashboard-service';
 import { sortBy } from 'lodash';
+import dashboardService from '@/services/dashboard-service';
+
 export default {
   name: 'ArticlesByAreaByInstituteByYear',
   data() {

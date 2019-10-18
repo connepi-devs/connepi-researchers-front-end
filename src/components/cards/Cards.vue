@@ -20,5 +20,5 @@ export default {
       cards,
     };
   },
-}
+};
 </script>
