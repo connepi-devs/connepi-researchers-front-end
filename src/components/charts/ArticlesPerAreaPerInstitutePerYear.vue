@@ -59,7 +59,7 @@ export default {
   methods: {
     getData() {
       const queryParams = this.defineParams();
-      
+
       dashboardService.getArticlesPerInstitutePerAreaPerYear(queryParams)
         .then(({ data }) => {
           this.chartData.rows = orderBy(data, ['ano']);
@@ -81,12 +81,11 @@ export default {
     },
     defineParams() {
       if (this.filter.sigla === 'Outros') {
-        return 'outros=true'
-      } else if (this.filter.sigla === 'Todos') {
+        return 'outros=true';
+      } if (this.filter.sigla === 'Todos') {
         return '';
-      } else {
-        return `instituicao_id=${this.filter.id}`;
       }
+      return `instituicao_id=${this.filter.id}`;
     },
   },
 };
