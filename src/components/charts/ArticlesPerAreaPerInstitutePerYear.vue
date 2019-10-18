@@ -30,7 +30,7 @@ import dashboardService from '@/services/dashboard-service';
 import instituteService from '@/services/institute-service';
 
 export default {
-  name: 'ArticlesByAreaByInstituteByYear',
+  name: 'ArticlesPerAreaPerInstitutePerYear',
   data() {
     return {
       chartData: {
@@ -69,9 +69,10 @@ export default {
         });
     },
     getInstitutes() {
-      instituteService.get()
+      instituteService.get('regiao[]=norte&regiao[]=nordeste')
         .then(({ data }) => {
-          const orderedInstitutes = orderBy(data, ['nome']);
+          console.log(data);
+          const orderedInstitutes = orderBy(data, ['sigla']);
           this.institutes = [...this.institutes, ...orderedInstitutes, { id: -2, sigla: 'Outros' }];
         })
         .catch((err) => {
