@@ -4,11 +4,10 @@
       <v-container>
         <v-layout column>
           <v-layout class="mt-2 mb-4" align-end>
-            <h2>Total de artigos por área por IF</h2>
+            <h2>Total de artigos por área por IF por ano</h2>
           </v-layout>
           <ve-histogram
             :data="chartData"
-            :settings="chartSettings"
           />
         </v-layout>
       </v-container>
@@ -18,64 +17,36 @@
 
 <script>
 import dashboardService from '@/services/dashboard-service';
-import rows from '@/data/articles-by-area-and-institute.json';
-
+import { sortBy } from 'lodash';
 export default {
   name: 'ArticlesByAreaByInstituteByYear',
   data() {
-    this.chartSettings = {
-      metrics: [
-        'Ciências Exatas e da Terra',
-        'Ciências Biológicas',
-        'Engenharias',
-        'Ciências da Saúde',
-        'Ciências Agrárias',
-        'Ciências Sociais Aplicadas',
-        'Ciências Humanas',
-        'Linguística, Letras e Artes',
-        'Outros',
-      ],
-      stack: {
-        areas: [
-          'Ciências Exatas e da Terra',
-          'Ciências Biológicas',
-          'Engenharias',
-          'Ciências da Saúde',
-          'Ciências Agrárias',
-          'Ciências Sociais Aplicadas',
-          'Ciências Humanas',
-          'Linguística, Letras e Artes',
-          'Outros',
-        ],
-      },
-    };
     return {
       chartData: {
         columns: [
-          'institute',
-          'Ciências Exatas e da Terra',
-          'Ciências Biológicas',
-          'Engenharias',
-          'Ciências da Saúde',
-          'Ciências Agrárias',
-          'Ciências Sociais Aplicadas',
-          'Ciências Humanas',
-          'Linguística, Letras e Artes',
-          'Outros',
+          'ano',
+          'CIÊNCIAS EXATAS E DA TERRA',
+          'CIÊNCIAS BIOLÓGICAS',
+          'ENGENHARIAS',
+          'CIÊNCIAS DA SAÚDE',
+          'CIÊNCIAS AGRÁRIAS',
+          'CIÊNCIAS SOCIAIS APLICADAS',
+          'CIÊNCIAS HUMANAS',
+          'LINGUÍSTICA, LETRAS E ARTES',
+          'OUTROS',
         ],
-        rows,
+        rows: [],
       },
     };
   },
   mounted() {
-    console.log(process.env.VUE_APP_API_URL);
     this.getData();
   },
   methods: {
     getData() {
       dashboardService.getArticlesPerInstitutePerAreaPerYear()
         .then(({ data }) => {
-          console.log(data);
+          this.chartData.rows = sortBy(data, ['ano']);
         })
         .catch((err) => {
           console.error(err);
