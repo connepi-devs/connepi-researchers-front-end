@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import dashboardService from '@/services/dashboard-service';
 import rows from '@/data/articles-by-area-and-institute.json';
 
 export default {
@@ -65,6 +66,21 @@ export default {
         rows,
       },
     };
+  },
+  mounted() {
+    console.log(process.env.VUE_APP_API_URL);
+    this.getData();
+  },
+  methods: {
+    getData() {
+      dashboardService.getArticlesPerInstitutePerAreaPerYear()
+        .then(({ data }) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
   },
 };
 </script>
