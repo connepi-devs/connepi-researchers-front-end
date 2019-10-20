@@ -9,7 +9,7 @@
           <projects-by-area />
         </v-flex>
         <v-flex xs7>
-          <researchers-ranking />
+          <institutes-ranking />
         </v-flex>
       </v-layout>
       <articles-per-area-per-institute-per-year />
@@ -25,7 +25,7 @@ import ArticlesByAreaByYear from '@/components/charts/ArticlesByAreaByYear.vue';
 import ArticlesPerInstitute from '@/components/charts/ArticlesPerInstitute.vue';
 import Cards from '@/components/cards/Cards.vue';
 import ProjectsByArea from '@/components/charts/ProjectsByArea.vue';
-import ResearchersRanking from '@/components/tables/ResearchersRanking.vue';
+import InstitutesRanking from '@/components/tables/InstitutesRanking.vue';
 
 export default {
   name: 'Home',
@@ -35,7 +35,7 @@ export default {
     ArticlesPerInstitute,
     Cards,
     ProjectsByArea,
-    ResearchersRanking,
+    InstitutesRanking,
   },
 };
 </script>
