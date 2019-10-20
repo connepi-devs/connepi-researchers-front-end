@@ -13,7 +13,7 @@
         </v-flex>
       </v-layout>
       <articles-per-area-per-institute-per-year />
-      <articles-by-institute />
+      <articles-per-institute />
       <articles-by-area-by-year />
     </v-layout>
   </v-container>
@@ -22,7 +22,7 @@
 <script>
 import ArticlesPerAreaPerInstitutePerYear from '@/components/charts/ArticlesPerAreaPerInstitutePerYear.vue';
 import ArticlesByAreaByYear from '@/components/charts/ArticlesByAreaByYear.vue';
-import ArticlesByInstitute from '@/components/charts/ArticlesByInstitute.vue';
+import ArticlesPerInstitute from '@/components/charts/ArticlesPerInstitute.vue';
 import Cards from '@/components/cards/Cards.vue';
 import ProjectsByArea from '@/components/charts/ProjectsByArea.vue';
 import ResearchersRanking from '@/components/tables/ResearchersRanking.vue';
@@ -32,7 +32,7 @@ export default {
   components: {
     ArticlesPerAreaPerInstitutePerYear,
     ArticlesByAreaByYear,
-    ArticlesByInstitute,
+    ArticlesPerInstitute,
     Cards,
     ProjectsByArea,
     ResearchersRanking,
