@@ -14,14 +14,14 @@
       </v-layout>
       <articles-per-area-per-institute-per-year />
       <articles-per-institute />
-      <articles-by-area-by-year />
+      <articles-per-area-per-year />
     </v-layout>
   </v-container>
 </template>
 
 <script>
 import ArticlesPerAreaPerInstitutePerYear from '@/components/charts/ArticlesPerAreaPerInstitutePerYear.vue';
-import ArticlesByAreaByYear from '@/components/charts/ArticlesByAreaByYear.vue';
+import ArticlesPerAreaPerYear from '@/components/charts/ArticlesPerAreaPerYear.vue';
 import ArticlesPerInstitute from '@/components/charts/ArticlesPerInstitute.vue';
 import Cards from '@/components/cards/Cards.vue';
 import ArticlesPerArea from '@/components/charts/ArticlesPerArea.vue';
@@ -31,7 +31,7 @@ export default {
   name: 'Home',
   components: {
     ArticlesPerAreaPerInstitutePerYear,
-    ArticlesByAreaByYear,
+    ArticlesPerAreaPerYear,
     ArticlesPerInstitute,
     Cards,
     ArticlesPerArea,
