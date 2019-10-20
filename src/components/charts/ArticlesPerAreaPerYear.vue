@@ -12,34 +12,42 @@
 </template>
 
 <script>
-import rows from '@/data/articles-by-area-by-year.json';
+import { orderBy } from 'lodash';
 import dashboardService from '@/services/dashboard-service';
 
 export default {
   name: 'ArticlesPerAreaPerYear',
-  computed: {
-    chartData() {
-      return {
+  data() {
+    return {
+      rows: [],
+      chartData: {
         columns: [
-          'year',
-          'Ciências Exatas e da Terra',
-          'Ciências Biológicas',
-          'Engenharias',
-          'Ciências da Saúde',
-          'Ciências Agrárias',
-          'Ciências Sociais Aplicadas',
-          'Ciências Humanas',
-          'Linguística, Letras e Artes',
-          'Outros',
+          'ano',
+          'CIÊNCIAS EXATAS E DA TERRA',
+          'CIÊNCIAS BIOLÓGICAS',
+          'ENGENHARIAS',
+          'CIÊNCIAS DA SAÚDE',
+          'CIÊNCIAS AGRÁRIAS',
+          'CIÊNCIAS SOCIAIS APLICADAS',
+          'CIÊNCIAS HUMANAS',
+          'LINGUÍSTICA, LETRAS E ARTES',
+          'OUTROS',
         ],
-        rows,
-      };
-    },
+        rows: [],
+      },
+    };
   },
   mounted() {
-    dashboardService.getArticlesCount('group_by=area&&ano')
+    dashboardService.getArticlesPerInstitutePerAreaPerYear('')
       .then(({ data }) => {
-        console.log(data);
+        const dataWithYearAsString = data.map(item => ({
+          ...item,
+          ano: String(item.ano),
+        }))
+        this.chartData.rows = orderBy(dataWithYearAsString, ['ano']);;
+      })
+      .catch((err) => {
+        console.error(err);
       })
   }
 };
