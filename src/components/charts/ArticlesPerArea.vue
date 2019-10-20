@@ -23,7 +23,7 @@
 import rows from '@/data/projects-by-area.json';
 
 export default {
-  name: 'ArticlesByInstitute',
+  name: 'ArticlesPerArea',
   data() {
     this.chartExtend = {
       series: {
