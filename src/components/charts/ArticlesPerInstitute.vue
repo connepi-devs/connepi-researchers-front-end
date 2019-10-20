@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import dashboardService from '@/services/dashboard-service';
 import { orderBy } from 'lodash';
+import dashboardService from '@/services/dashboard-service';
 
 export default {
   name: 'ArticlesPerInstitute',
@@ -32,7 +32,7 @@ export default {
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   },
 };
 </script>
