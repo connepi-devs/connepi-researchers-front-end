@@ -71,7 +71,6 @@ export default {
     getInstitutes() {
       instituteService.get('regiao[]=norte&regiao[]=nordeste')
         .then(({ data }) => {
-          console.log(data);
           const orderedInstitutes = orderBy(data, ['sigla']);
           this.institutes = [...this.institutes, ...orderedInstitutes, { id: -2, sigla: 'Outros' }];
         })
