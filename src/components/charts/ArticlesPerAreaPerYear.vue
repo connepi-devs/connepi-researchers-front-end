@@ -13,9 +13,10 @@
 
 <script>
 import rows from '@/data/articles-by-area-by-year.json';
+import dashboardService from '@/services/dashboard-service';
 
 export default {
-  name: 'ArticlesByAreaByYear',
+  name: 'ArticlesPerAreaPerYear',
   computed: {
     chartData() {
       return {
@@ -35,5 +36,11 @@ export default {
       };
     },
   },
+  mounted() {
+    dashboardService.getArticlesCount('group_by=area&&ano')
+      .then(({ data }) => {
+        console.log(data);
+      })
+  }
 };
 </script>
