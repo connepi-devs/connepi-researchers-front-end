@@ -21,6 +21,7 @@
 
 <script>
 import rows from '@/data/projects-by-area.json';
+import dashboardService from '@/services/dashboard-service';
 
 export default {
   name: 'ArticlesPerArea',
@@ -46,7 +47,7 @@ export default {
         emphasis: {
           show: true,
           textStyle: {
-            fontSize: '11',
+            fontSize: '10',
             fontWeight: 'bold',
           },
         },
@@ -54,10 +55,24 @@ export default {
     };
     return {
       chartData: {
-        columns: ['areaDoConhecimento', 'total'],
-        rows,
+        columns: ['area', 'publicacoes'],
+        rows: [],
       },
     };
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      dashboardService.getArticlesCount('group_by=area')
+        .then(({ data }) => {
+          this.chartData.rows = data;
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    },
   },
 };
 </script>
