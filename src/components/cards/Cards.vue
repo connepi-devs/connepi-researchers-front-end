@@ -41,14 +41,14 @@ export default {
         };
         const totalEvents = {
           cor: 'blue',
-          icone: 'mdi-account-group',
+          icone: 'mdi-calendar-range-outline',
           titulo: 'Total de eventos',
           total: data.length,
         };
         const articlesAverage = {
           id: 3,
           cor: 'orange',
-          icone: 'mdi-database',
+          icone: 'mdi-file-document-box-multiple-outline',
           titulo: 'Publicações/Ano',
           total: sumBy(data, 'publicacoes') / data.length,
         };
