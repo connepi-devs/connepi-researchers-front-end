@@ -35,7 +35,7 @@ export default {
       legend: {
         type: 'scroll',
         orient: 'vertical',
-        right: 10,
+        right: 5,
         top: 50,
         bottom: 20,
       },
