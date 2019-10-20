@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import rows from '@/data/projects-by-area.json';
+import { orderBy } from 'lodash';
 import dashboardService from '@/services/dashboard-service';
 
 export default {
@@ -67,7 +67,7 @@ export default {
     getData() {
       dashboardService.getArticlesCount('group_by=area')
         .then(({ data }) => {
-          this.chartData.rows = data;
+          this.chartData.rows = orderBy(data, ['area']);
         })
         .catch((err) => {
           console.error(err);
