@@ -6,7 +6,7 @@
       <!-- Charts and Tables -->
       <v-layout>
         <v-flex xs5>
-          <projects-by-area />
+          <articles-per-area />
         </v-flex>
         <v-flex xs7>
           <institutes-ranking />
@@ -24,7 +24,7 @@ import ArticlesPerAreaPerInstitutePerYear from '@/components/charts/ArticlesPerA
 import ArticlesByAreaByYear from '@/components/charts/ArticlesByAreaByYear.vue';
 import ArticlesPerInstitute from '@/components/charts/ArticlesPerInstitute.vue';
 import Cards from '@/components/cards/Cards.vue';
-import ProjectsByArea from '@/components/charts/ProjectsByArea.vue';
+import ArticlesPerArea from '@/components/charts/ArticlesPerArea.vue';
 import InstitutesRanking from '@/components/tables/InstitutesRanking.vue';
 
 export default {
@@ -34,7 +34,7 @@ export default {
     ArticlesByAreaByYear,
     ArticlesPerInstitute,
     Cards,
-    ProjectsByArea,
+    ArticlesPerArea,
     InstitutesRanking,
   },
 };

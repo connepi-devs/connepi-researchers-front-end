@@ -9,4 +9,7 @@ export default {
   getTotalArticlesPerInstitute() {
     return axios.get('/publicacoes/institutos_federais_do_norte_e_nordeste');
   },
+  getArticlesCount(queryParams) {
+    return axios.get(`/publicacoes/articles_count?${queryParams}`);
+  },
 };

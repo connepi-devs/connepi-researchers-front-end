@@ -20,10 +20,11 @@
 </template>
 
 <script>
-import rows from '@/data/projects-by-area.json';
+import { orderBy } from 'lodash';
+import dashboardService from '@/services/dashboard-service';
 
 export default {
-  name: 'ArticlesByInstitute',
+  name: 'ArticlesPerArea',
   data() {
     this.chartExtend = {
       series: {
@@ -34,7 +35,7 @@ export default {
       legend: {
         type: 'scroll',
         orient: 'vertical',
-        right: 10,
+        right: 5,
         top: 50,
         bottom: 20,
       },
@@ -46,7 +47,7 @@ export default {
         emphasis: {
           show: true,
           textStyle: {
-            fontSize: '11',
+            fontSize: '10',
             fontWeight: 'bold',
           },
         },
@@ -54,10 +55,24 @@ export default {
     };
     return {
       chartData: {
-        columns: ['areaDoConhecimento', 'total'],
-        rows,
+        columns: ['area', 'publicacoes'],
+        rows: [],
       },
     };
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      dashboardService.getArticlesCount('group_by=area')
+        .then(({ data }) => {
+          this.chartData.rows = orderBy(data, ['area']);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
   },
 };
 </script>
