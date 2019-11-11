@@ -50,7 +50,7 @@ export default {
           cor: 'orange',
           icone: 'mdi-file-document-box-multiple-outline',
           titulo: 'Publicações/Ano',
-          total: sumBy(data, 'publicacoes') / data.length,
+          total: Math.round(sumBy(data, 'publicacoes') / data.length),
         };
 
         this.cards = [...this.cards, totalEvents, totalArticles, articlesAverage];
