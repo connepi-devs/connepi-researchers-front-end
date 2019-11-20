@@ -54,6 +54,7 @@ import { mapActions } from 'vuex';
 import authService from '@/services/auth-service';
 import handleErrors from '@/utils/handle-errors';
 import { requiredRule, emailRule, passwordMinLengthRule } from '@/utils/validation-rules';
+import { axiosInstance } from '@/services/axios-instance';
 
 export default {
   name: 'Login',
@@ -68,6 +69,7 @@ export default {
   methods: {
     emailRule,
     requiredRule,
+    passwordMinLengthRule,
     login() {
       const body = {
         email: this.email,
@@ -76,13 +78,8 @@ export default {
       this.loading = true;
 
       authService.login(body)
-        .then(({ data }) => {
-            console.log(data);
-          this.setSnackbar({
-            color: 'success',
-            message: 'Login realizado com sucesso!',
-            show: true,
-          });
+        .then(({ data, headers }) => {
+          this.onLoginSuccess(data, headers);
         })
         .catch((err) => {
           this.setSnackbar({
@@ -94,6 +91,21 @@ export default {
         .finally(() => {
           this.loading = false;
         });
+    },
+    onLoginSuccess(data, headers) {
+      localStorage.clear();
+      localStorage.setItem('access-token', headers['access-token']);
+      localStorage.setItem('client', headers['client']);
+      localStorage.setItem('uid', headers['uid']);
+      axiosInstance.defaults.headers.common['access-token'] = headers['access-token'];
+      axiosInstance.defaults.headers.common['client'] = headers['client'];
+      axiosInstance.defaults.headers.common['uid'] = headers['uid'];
+      this.setSnackbar({
+        color: 'success',
+        message: 'Login realizado com sucesso!',
+        show: true,
+      });
+      this.$router.push({ name: 'Home' });
     },
     ...mapActions('base', ['setSnackbar']),
   },
