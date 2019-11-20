@@ -12,7 +12,7 @@
                 />
                 <v-text-field
                   v-model="password"
-                  label="E-mail"
+                  label="Senha"
                 />
             </v-card-text>
             <v-card-actions>
@@ -46,7 +46,7 @@
 <script>
 import { mapActions } from 'vuex';
 import authService from '@/services/auth-service';
-import handleErrors from "@/utils/handle-errors";
+import handleErrors from '@/utils/handle-errors';
 
 export default {
   name: 'Login',
