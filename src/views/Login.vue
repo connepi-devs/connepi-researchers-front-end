@@ -2,19 +2,21 @@
   <v-container>
     <v-row class="login-container" justify="center" align="center" fill-height>
       <v-card width="350">
-        <v-card-title class="title font-weight-bold">
+        <v-card-title class="title font-weight-bold primary--text">
           Login
         </v-card-title>
         <v-container>
-          <v-form>
+          <v-form @submit.prevent="login" ref="form" v-model="valid">
             <v-card-text>
                 <v-text-field
                   v-model="email"
                   label="E-mail"
+                  :rules="[emailRule, requiredRule]"
                 />
                 <v-text-field
                   v-model="password"
                   label="Senha"
+                  :rules="[passwordMinLengthRule, requiredRule]"
                 />
             </v-card-text>
             <v-card-actions>
@@ -24,17 +26,19 @@
                   width="100%"
                   rounded
                   color="primary"
-                  :disabled="loading"
+                  :disabled="loading || !valid"
                   :loading="loading"
+                  type="submit"
                 >
                   Login
                 </v-btn>
                 <v-btn
+                  @click="$router.push({ name: 'SignUp' })"
                   class="mt-2 text-capitalize"
                   color="primary"
                   text
                 >
-                  Ainda não tem conta? Cadastrar
+                  Não possui login? Cadastre-se!
                 </v-btn>
               </div>
             </v-card-actions>
@@ -49,6 +53,7 @@
 import { mapActions } from 'vuex';
 import authService from '@/services/auth-service';
 import handleErrors from '@/utils/handle-errors';
+import { requiredRule, emailRule, passwordMinLengthRule } from '@/utils/validation-rules';
 
 export default {
   name: 'Login',
@@ -57,9 +62,12 @@ export default {
       email: '',
       loading: false,
       password: '',
+      valid: false,
     };
   },
   methods: {
+    emailRule,
+    requiredRule,
     login() {
       const body = {
         email: this.email,
@@ -69,7 +77,12 @@ export default {
 
       authService.login(body)
         .then(({ data }) => {
-          console.log(data);
+            console.log(data);
+          this.setSnackbar({
+            color: 'success',
+            message: 'Login realizado com sucesso!',
+            show: true,
+          });
         })
         .catch((err) => {
           this.setSnackbar({
