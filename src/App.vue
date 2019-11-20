@@ -1,12 +1,35 @@
 <template>
   <v-app>
     <v-app-bar dark color="blue darken-3" app>
-      <div class="toolbar-title">
-        <span class="headline font-weight-bold">Repositório CONNEPI</span>
-      </div>
-      <v-spacer></v-spacer>
+      <span class="toolbar-title headline font-weight-bold">Repositório CONNEPI</span>
+      <v-spacer />
       <v-toolbar-items>
-        <v-btn v-if="isAuthenticated" title="Sair" text @click="logout">
+        <v-btn text @click="$router.push({ name: 'Search' })">
+          <span
+            :class="{
+              'text-underline font-weight-bold': $router.currentRoute.name === 'Search',
+            }"
+          >
+          Buscar Publicações
+        </span>
+        </v-btn>
+        <v-btn text @click="$router.push({ name: 'Dashboard' })">
+          <span
+            :class="{
+              'text-underline font-weight-bold': $router.currentRoute.name === 'Dashboard',
+            }"
+          >
+          Dashboard
+        </span>
+        </v-btn>
+        <v-btn
+          v-if="!isAuthenticated()"
+          @click="$router.push({ name: 'Login' })"
+          text
+        >
+          Login
+        </v-btn>
+        <v-btn v-if="isAuthenticated()" title="Sair" text @click="logout">
           <v-icon>mdi-logout</v-icon>
         </v-btn>
       </v-toolbar-items>
@@ -42,9 +65,6 @@ export default {
 
 <style scoped>
   .toolbar-title {
-    display: flex;
-    justify-content: center;
     width: 100%;
-    margin-right: -64px;
   }
 </style>
