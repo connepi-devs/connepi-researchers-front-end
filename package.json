@@ -12,6 +12,7 @@
     "core-js": "^2.6.5",
     "echarts": "^4.2.1",
     "lodash": "^4.17.15",
+    "raleway-npm-webfont": "0.0.1",
     "v-charts": "^1.19.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
