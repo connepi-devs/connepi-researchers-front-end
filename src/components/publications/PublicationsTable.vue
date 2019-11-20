@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'Publications',
+  name: 'PublicationsTable',
   props: {
     results: {
       default: () => [],

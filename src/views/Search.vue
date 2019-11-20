@@ -51,7 +51,7 @@
                 <span class="headline" v-if="!firstSearch && results.length === 0 && !loading">
                   Não foram encontradas publicações com o termo e filtro pesquisado
                 </span>
-                <publications v-if="results.length > 0 && !loading" :publications="results" />
+                <publications-table v-if="results.length > 0 && !loading" :publications="results" />
               </div>
             </v-col>
           </v-row>
@@ -62,13 +62,13 @@
 </template>
 
 <script>
-import Publications from '@/components/publications/Publications.vue';
+import PublicationsTable from '@/components/publications/PublicationsTable.vue';
 import { requiredRule } from "@/utils/validation-rules";
 
 export default {
   name: 'Search',
   components: {
-    Publications,
+    PublicationsTable,
   },
   data() {
     return {
