@@ -5,19 +5,23 @@
         <span class="headline">Repositório CONNEPI</span>
       <v-spacer />
     </v-app-bar>
-
     <v-content>
       <router-view />
     </v-content>
+    <snackbar />
   </v-app>
 </template>
 
 <script>
+import Snackbar from '@/components/base/Snackbar.vue';
 
 export default {
   name: 'App',
   data: () => ({
     //
   }),
+  components: {
+    Snackbar,
+  },
 };
 </script>
