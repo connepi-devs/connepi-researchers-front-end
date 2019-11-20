@@ -84,7 +84,7 @@ export default {
       this.loading = true;
 
       authService.signUp(body)
-        .then(({ data }) => {
+        .then(() => {
           this.setSnackbar({
             color: 'success',
             message: 'Usuário cadastrado com sucesso. Realize seu login!',
