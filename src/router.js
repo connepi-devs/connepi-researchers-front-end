@@ -6,6 +6,7 @@ import Dashboard from './views/Dashboard.vue';
 import Login from './views/Login.vue';
 import SignUp from './views/SignUp.vue';
 import Search from './views/Search.vue';
+import Publication from './views/Publication.vue';
 
 import isAuthenticated from '@/utils/is-authenticated';
 
@@ -49,6 +50,12 @@ const router = new Router({
       path: '/search',
       name: 'Search',
       component: Search,
+    },
+    {
+      path: '/publication/:id',
+      props: true,
+      name: 'Publication',
+      component: Publication,
     },
   ],
 });
