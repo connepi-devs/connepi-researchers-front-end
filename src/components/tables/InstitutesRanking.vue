@@ -42,7 +42,6 @@
 
 <script>
 import { orderBy } from 'lodash';
-import dashboardService from '@/services/dashboard-service';
 
 export default {
   name: 'InstitutesRanking',
@@ -71,8 +70,11 @@ export default {
       ],
     };
   },
-  mounted() {
-    this.getData();
+  props: {
+    chartData: {
+      type: Array,
+      default: () => [],
+    },
   },
   methods: {
     getColor(posicao) {
@@ -83,15 +85,6 @@ export default {
       };
       return posicoes[posicao];
     },
-    getData() {
-      dashboardService.getTotalArticlesPerInstitute()
-        .then(({ data }) => {
-          this.orderData(data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    },
     orderData(data) {
       let institutes = data.filter(institute => institute.regiao !== 'Outras');
       institutes = orderBy(institutes, ['publicacoes'], ['desc']);
@@ -100,6 +93,11 @@ export default {
         posicao: index + 1,
       }));
       this.data = institutes;
+    },
+  },
+  watch: {
+    chartData(val) {
+      this.orderData(val);
     },
   },
 };

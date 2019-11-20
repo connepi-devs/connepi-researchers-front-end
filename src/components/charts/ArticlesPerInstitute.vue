@@ -4,7 +4,7 @@
       <v-container>
         <v-layout column>
           <h2 class="mt-2 mb-4">Total de artigos por IF</h2>
-          <ve-histogram :data="chartData" />
+          <ve-histogram :data="chart" />
         </v-layout>
       </v-container>
     </v-card-text>
@@ -13,26 +13,27 @@
 
 <script>
 import { orderBy } from 'lodash';
-import dashboardService from '@/services/dashboard-service';
 
 export default {
   name: 'ArticlesPerInstitute',
   data() {
     return {
-      chartData: {
+      chart: {
         columns: ['instituicao', 'publicacoes'],
         rows: [],
       },
     };
   },
-  mounted() {
-    dashboardService.getTotalArticlesPerInstitute()
-      .then(({ data }) => {
-        this.chartData.rows = orderBy(data, ['instituicao']);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  props: {
+    chartData: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  watch: {
+    chartData(val) {
+      this.chart.rows = orderBy(val, ['instituicao']);
+    },
   },
 };
 </script>

@@ -4,7 +4,7 @@
       <v-container>
         <v-layout column>
           <h2 class="mt-2 mb-4">Total de artigos por área por ano</h2>
-          <ve-line :data="chartData" />
+          <ve-line :data="chart" />
         </v-layout>
       </v-container>
     </v-card-text>
@@ -13,14 +13,19 @@
 
 <script>
 import { orderBy } from 'lodash';
-import dashboardService from '@/services/dashboard-service';
 
 export default {
   name: 'ArticlesPerAreaPerYear',
+  props: {
+    chartData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       rows: [],
-      chartData: {
+      chart: {
         columns: [
           'ano',
           'CIÊNCIAS EXATAS E DA TERRA',
@@ -37,18 +42,14 @@ export default {
       },
     };
   },
-  mounted() {
-    dashboardService.getArticlesPerInstitutePerAreaPerYear('')
-      .then(({ data }) => {
-        const dataWithYearAsString = data.map(item => ({
-          ...item,
-          ano: String(item.ano),
-        }));
-        this.chartData.rows = orderBy(dataWithYearAsString, ['ano']);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  watch: {
+    chartData(val) {
+      const dataWithYearAsString = val.map(item => ({
+        ...item,
+        ano: String(item.ano),
+      }));
+      this.chart.rows = orderBy(dataWithYearAsString, ['ano']);
+    },
   },
 };
 </script>

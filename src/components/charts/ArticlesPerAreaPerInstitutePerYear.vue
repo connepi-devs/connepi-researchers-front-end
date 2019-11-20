@@ -1,5 +1,9 @@
 <template>
   <v-card elevation="0" class="my-2">
+    <div v-if="loading" class="loader-container">
+      <v-progress-circular indeterminate color="primary" size="64" />
+      <span>Carregando dados...</span>
+    </div>
     <v-card-text>
       <v-container>
         <v-layout column>
@@ -10,14 +14,14 @@
               v-model="filter"
               label="Filtrar por Instituição"
               outlined
-              :items="institutes"
+              :items="orederedInstitutes"
               item-text="sigla"
               item-value="id"
               return-object
-              @input="getData"
+              @input="filterPerInstitute"
             />
           </v-layout>
-          <ve-histogram :data="chartData" />
+          <ve-histogram :data="chart" />
         </v-layout>
       </v-container>
     </v-card-text>
@@ -26,14 +30,12 @@
 
 <script>
 import { orderBy } from 'lodash';
-import dashboardService from '@/services/dashboard-service';
-import instituteService from '@/services/institute-service';
 
 export default {
   name: 'ArticlesPerAreaPerInstitutePerYear',
   data() {
     return {
-      chartData: {
+      chart: {
         columns: [
           'ano',
           'CIÊNCIAS EXATAS E DA TERRA',
@@ -48,37 +50,28 @@ export default {
         ],
         rows: [],
       },
+      loading: false,
       filter: { id: -1, sigla: 'Todos' },
-      institutes: [{ id: -1, sigla: 'Todos' }],
+      orederedInstitutes: [{ id: -1, sigla: 'Todos' }],
     };
   },
-  created() {
-    this.getInstitutes();
-    this.getData();
+  props: {
+    chartData: {
+      type: Array,
+      default: () => [],
+    },
+    institutes: {
+      type: Array,
+      default: () => [],
+    },
   },
   methods: {
-    getData() {
-      const queryParams = this.defineParams();
-
-      dashboardService.getArticlesPerInstitutePerAreaPerYear(queryParams)
-        .then(({ data }) => {
-          this.chartData.rows = orderBy(data, ['ano']);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+    filterPerInstitute() {
+      this.$emit('filter', this.params);
     },
-    getInstitutes() {
-      instituteService.get('regiao[]=norte&regiao[]=nordeste')
-        .then(({ data }) => {
-          const orderedInstitutes = orderBy(data, ['sigla']);
-          this.institutes = [...this.institutes, ...orderedInstitutes, { id: -2, sigla: 'Outros' }];
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    },
-    defineParams() {
+  },
+  computed: {
+    params() {
       if (this.filter.sigla === 'Outros') {
         return 'outros=true';
       } if (this.filter.sigla === 'Todos') {
@@ -87,5 +80,32 @@ export default {
       return `instituicao_id=${this.filter.id}`;
     },
   },
+  watch: {
+    institutes(val) {
+      const orderedInstitutes = orderBy(val, ['sigla']);
+      this.orederedInstitutes = [...this.orederedInstitutes, ...orderedInstitutes, { id: -2, sigla: 'Outros' }];
+    },
+    chartData(val) {
+      this.loading = true;
+      setTimeout(() => {
+        this.chart.rows = orderBy(val, ['ano']);
+        this.loading = false;
+      }, 500);
+    },
+  },
 };
 </script>
+
+<style scoped>
+  .loader-container {
+    position: absolute;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: 9;
+  }
+</style>
