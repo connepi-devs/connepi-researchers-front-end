@@ -5,6 +5,7 @@ import Home from './views/Home.vue';
 import Dashboard from './views/Dashboard.vue';
 import Login from './views/Login.vue';
 import SignUp from './views/SignUp.vue';
+import Search from './views/Search.vue';
 
 import isAuthenticated from '@/utils/is-authenticated';
 
@@ -34,6 +35,11 @@ const router = new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search,
     },
   ],
 });
