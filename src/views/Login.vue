@@ -2,7 +2,9 @@
   <v-container>
     <v-row class="login-container" justify="center" align="center" fill-height>
       <v-card width="350">
-        <v-card-title>Login</v-card-title>
+        <v-card-title class="title font-weight-bold">
+          Login
+        </v-card-title>
         <v-container>
           <v-form>
             <v-card-text>
