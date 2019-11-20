@@ -11,6 +11,8 @@
                 label="Digite um termo para pesquisar"
                 outlined
                 dense
+                clearable
+                :rules="[requiredRule]"
               />
             </v-col>
             <v-col cols="3">
@@ -29,13 +31,13 @@
                 @click="searchArticle"
                 width="100%"
                 color="primary"
-                :disabled="loading"
+                :disabled="loading || !valid"
                 type="submit"
               >
                 Pesquisar
               </v-btn>
             </v-col>
-            
+
             <!-- Results -->
             <v-col cols="12">
               <div class="results">
@@ -49,6 +51,7 @@
                 <span class="headline" v-if="!firstSearch && results.length === 0 && !loading">
                   Não foram encontradas publicações com o termo e filtro pesquisado
                 </span>
+                <publications v-if="results.length > 0 && !loading" :publications="results" />
               </div>
             </v-col>
           </v-row>
@@ -59,8 +62,14 @@
 </template>
 
 <script>
+import Publications from '@/components/publications/Publications.vue';
+import { requiredRule } from "@/utils/validation-rules";
+
 export default {
   name: 'Search',
+  components: {
+    Publications,
+  },
   data() {
     return {
       filters: [
@@ -75,12 +84,14 @@ export default {
       loading: false,
       results: [],
       search: '',
+      valid: false,
     };
   },
   methods: {
+    requiredRule,
     searchArticle() {
       this.firstSearch = false;
-      this.loading = true
+      this.loading = true;
       setTimeout(() => {
         this.loading = false;
       }, 500);
