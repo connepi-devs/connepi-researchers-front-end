@@ -90,7 +90,7 @@ export default {
         })
         .catch((err) => {
           console.error(err);
-        })
+        });
     },
     orderData(data) {
       let institutes = data.filter(institute => institute.regiao !== 'Outras');

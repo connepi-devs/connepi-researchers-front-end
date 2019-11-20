@@ -43,12 +43,12 @@ export default {
         const dataWithYearAsString = data.map(item => ({
           ...item,
           ano: String(item.ano),
-        }))
-        this.chartData.rows = orderBy(dataWithYearAsString, ['ano']);;
+        }));
+        this.chartData.rows = orderBy(dataWithYearAsString, ['ano']);
       })
       .catch((err) => {
         console.error(err);
-      })
-  }
+      });
+  },
 };
 </script>
