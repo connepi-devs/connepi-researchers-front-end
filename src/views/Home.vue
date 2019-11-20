@@ -6,36 +6,36 @@
       <!-- Charts and Tables -->
       <v-layout>
         <v-flex xs5>
-          <projects-by-area />
+          <articles-per-area />
         </v-flex>
         <v-flex xs7>
-          <researchers-ranking />
+          <institutes-ranking />
         </v-flex>
       </v-layout>
-      <articles-by-area-by-institute-by-year />
-      <articles-by-institute />
-      <articles-by-area-by-year />
+      <articles-per-area-per-institute-per-year />
+      <articles-per-institute />
+      <articles-per-area-per-year />
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import ArticlesByAreaByInstituteByYear from '@/components/charts/ArticlesByAreaByInstituteByYear.vue';
-import ArticlesByAreaByYear from '@/components/charts/ArticlesByAreaByYear.vue';
-import ArticlesByInstitute from '@/components/charts/ArticlesByInstitute.vue';
+import ArticlesPerAreaPerInstitutePerYear from '@/components/charts/ArticlesPerAreaPerInstitutePerYear.vue';
+import ArticlesPerAreaPerYear from '@/components/charts/ArticlesPerAreaPerYear.vue';
+import ArticlesPerInstitute from '@/components/charts/ArticlesPerInstitute.vue';
 import Cards from '@/components/cards/Cards.vue';
-import ProjectsByArea from '@/components/charts/ProjectsByArea.vue';
-import ResearchersRanking from '@/components/tables/ResearchersRanking.vue';
+import ArticlesPerArea from '@/components/charts/ArticlesPerArea.vue';
+import InstitutesRanking from '@/components/tables/InstitutesRanking.vue';
 
 export default {
   name: 'Home',
   components: {
-    ArticlesByAreaByInstituteByYear,
-    ArticlesByAreaByYear,
-    ArticlesByInstitute,
+    ArticlesPerAreaPerInstitutePerYear,
+    ArticlesPerAreaPerYear,
+    ArticlesPerInstitute,
     Cards,
-    ProjectsByArea,
-    ResearchersRanking,
+    ArticlesPerArea,
+    InstitutesRanking,
   },
 };
 </script>
