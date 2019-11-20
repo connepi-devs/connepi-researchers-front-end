@@ -11,6 +11,15 @@ import isAuthenticated from '@/utils/is-authenticated';
 
 Vue.use(Router);
 
+// const authGuard = ((to, from, next) => {
+//   if (!isAuthenticated() && to.path !== '/login') {
+//     return next('/login');
+//   } if (isAuthenticated() && to.name === 'Login') {
+//     return next('/');
+//   }
+//   return next();
+// });
+
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -19,7 +28,7 @@ const router = new Router({
       path: '/',
       name: 'Home',
       component: Home,
-      redirect: { name: 'Dashboard' },
+      redirect: { name: 'Search' },
     },
     {
       path: '/login',
@@ -45,9 +54,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (!isAuthenticated() && to.path !== '/login') {
-    return next('/login');
-  } if (isAuthenticated() && to.name === 'Login') {
+  if (isAuthenticated() && to.name === 'Login') {
     return next('/');
   }
   return next();
