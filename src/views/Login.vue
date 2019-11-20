@@ -95,11 +95,11 @@ export default {
     onLoginSuccess(data, headers) {
       localStorage.clear();
       localStorage.setItem('access-token', headers['access-token']);
-      localStorage.setItem('client', headers['client']);
-      localStorage.setItem('uid', headers['uid']);
+      localStorage.setItem('client', headers.client);
+      localStorage.setItem('uid', headers.uid);
       axiosInstance.defaults.headers.common['access-token'] = headers['access-token'];
-      axiosInstance.defaults.headers.common['client'] = headers['client'];
-      axiosInstance.defaults.headers.common['uid'] = headers['uid'];
+      axiosInstance.defaults.headers.common.client = headers.client;
+      axiosInstance.defaults.headers.common.uid = headers.uid;
       this.setSnackbar({
         color: 'success',
         message: 'Login realizado com sucesso!',
