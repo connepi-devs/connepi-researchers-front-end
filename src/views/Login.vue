@@ -57,7 +57,6 @@ import { mapActions } from 'vuex';
 import authService from '@/services/auth-service';
 import handleErrors from '@/utils/handle-errors';
 import { requiredRule, emailRule, passwordMinLengthRule } from '@/utils/validation-rules';
-import { axiosInstance } from '@/services/axios-instance';
 
 export default {
   name: 'Login',
@@ -101,9 +100,6 @@ export default {
       localStorage.setItem('access-token', headers['access-token']);
       localStorage.setItem('client', headers.client);
       localStorage.setItem('uid', headers.uid);
-      axiosInstance.defaults.headers.common['access-token'] = headers['access-token'];
-      axiosInstance.defaults.headers.common.client = headers.client;
-      axiosInstance.defaults.headers.common.uid = headers.uid;
       this.setSnackbar({
         color: 'success',
         message: 'Login realizado com sucesso!',
