@@ -17,6 +17,9 @@
                   v-model="password"
                   label="Senha"
                   :rules="[passwordMinLengthRule, requiredRule]"
+                  :type="showPassword ? 'text' : 'password'"
+                  :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+                  @click:append="showPassword = !showPassword"
                 />
             </v-card-text>
             <v-card-actions>
@@ -63,6 +66,7 @@ export default {
       email: '',
       loading: false,
       password: '',
+      showPassword: false,
       valid: false,
     };
   },
