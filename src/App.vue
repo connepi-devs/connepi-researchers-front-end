@@ -1,7 +1,12 @@
 <template>
   <v-app>
     <v-app-bar dark color="blue darken-3" app>
-      <span class="toolbar-title headline font-weight-bold">Repositório CONNEPI</span>
+      <span
+        class="toolbar-title headline font-weight-bold clickable"
+        @click="$router.push({ name: 'Home' })"
+      >
+        Repositório CONNEPI
+      </span>
       <v-spacer />
       <v-toolbar-items>
         <v-btn text @click="$router.push({ name: 'Search' })">
@@ -10,8 +15,17 @@
               'text-underline font-weight-bold': $router.currentRoute.name === 'Search',
             }"
           >
-          Buscar Publicações
-        </span>
+            Buscar Publicações
+          </span>
+        </v-btn>
+        <v-btn text @click="$router.push({ name: 'About' })">
+          <span
+            :class="{
+              'text-underline font-weight-bold': $router.currentRoute.name === 'About',
+            }"
+          >
+            Sobre o CONNEPI
+          </span>
         </v-btn>
         <v-btn text @click="$router.push({ name: 'Dashboard' })">
           <span
