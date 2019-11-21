@@ -8,6 +8,7 @@ import SignUp from './views/SignUp.vue';
 import Search from './views/Search.vue';
 import Publication from './views/Publication.vue';
 import About from './views/About.vue';
+import Downloads from './views/Downloads.vue';
 
 import isAuthenticated from '@/utils/is-authenticated';
 
@@ -51,6 +52,11 @@ const router = new Router({
       path: '/about',
       name: 'About',
       component: About,
+    },
+    {
+      path: '/downloads',
+      name: 'Downloads',
+      component: Downloads,
     },
     {
       path: '/search',
