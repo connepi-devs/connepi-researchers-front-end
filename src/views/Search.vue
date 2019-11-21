@@ -63,7 +63,7 @@
 
 <script>
 import PublicationsTable from '@/components/publications/PublicationsTable.vue';
-import { requiredRule } from "@/utils/validation-rules";
+import { requiredRule } from '@/utils/validation-rules';
 
 export default {
   name: 'Search',
