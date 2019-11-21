@@ -118,5 +118,5 @@ export default {
       window.open(url, '_blank');
     },
   },
-}
+};
 </script>
