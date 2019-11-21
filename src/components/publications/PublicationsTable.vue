@@ -34,6 +34,8 @@ export default {
         { text: 'Autor(a)', value: 'calories' },
         { text: 'Área', value: 'fat' },
         { text: 'Ano', value: 'carbs' },
+        { text: 'Insitituição', value: 'carbs' },
+        { text: 'Visualizar', value: 'view' },
       ],
       desserts: [
         {
