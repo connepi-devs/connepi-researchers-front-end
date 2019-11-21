@@ -7,6 +7,7 @@ import Login from './views/Login.vue';
 import SignUp from './views/SignUp.vue';
 import Search from './views/Search.vue';
 import Publication from './views/Publication.vue';
+import About from './views/About.vue';
 
 import isAuthenticated from '@/utils/is-authenticated';
 
@@ -45,6 +46,11 @@ const router = new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
     },
     {
       path: '/search',
