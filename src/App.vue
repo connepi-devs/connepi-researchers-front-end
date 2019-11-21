@@ -27,14 +27,23 @@
             Sobre o CONNEPI
           </span>
         </v-btn>
-        <v-btn text @click="$router.push({ name: 'Dashboard' })">
+        <v-btn text @click="$router.push({ name: 'Downloads' })">
           <span
             :class="{
-              'text-underline font-weight-bold': $router.currentRoute.name === 'Dashboard',
+              'text-underline font-weight-bold': $router.currentRoute.name === 'Downloads',
             }"
           >
-          Dashboard
-        </span>
+              Downloads
+            </span>
+          </v-btn>
+          <v-btn text @click="$router.push({ name: 'Dashboard' })">
+            <span
+              :class="{
+                'text-underline font-weight-bold': $router.currentRoute.name === 'Dashboard',
+              }"
+            >
+            Estatísticas
+          </span>
         </v-btn>
         <v-btn
           v-if="!isAuthenticated()"
