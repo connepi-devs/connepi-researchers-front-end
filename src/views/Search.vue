@@ -7,11 +7,25 @@
           <v-row>
             <v-col cols="6">
               <v-text-field
+                v-if="filter !== 'instituicao_id'"
                 v-model="search"
                 label="Digite um termo para pesquisar"
                 outlined
                 dense
                 clearable
+                :rules="[requiredRule]"
+              />
+              <v-autocomplete
+                v-if="filter === 'instituicao_id'"
+                v-model="search"
+                label="Selecione um instituto"
+                outlined
+                dense
+                clearable
+                :items="institutes"
+                item-text="sigla"
+                item-value="id"
+                no-data-text="Não foram encontrados institutos com o termo pesquisado"
                 :rules="[requiredRule]"
               />
             </v-col>
@@ -62,25 +76,31 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import PublicationsTable from '@/components/publications/PublicationsTable.vue';
 import { requiredRule } from '@/utils/validation-rules';
-import publicationsService from '@/services/publications-service';
 import handleErrors from '@/utils/handle-errors';
+import publicationsService from '@/services/publications-service';
+import institutesService from '@/services/institute-service';
 
 export default {
   name: 'Search',
   components: {
     PublicationsTable,
   },
+  created() {
+    this.getInstitutes();
+  },
   data() {
     return {
       filters: [
         { label: 'Ano', value: 'ano' },
         { label: 'Autor', value: 'autor' },
-        { label: 'Área', value: 'area' },
+        { label: 'Área', value: 'area_id' },
         { label: 'Instituição', value: 'instituicao_id' },
         { label: 'Título', value: 'titulo' },
       ],
+      institutes: [],
       filter: 'titulo',
       firstSearch: true,
       loading: false,
@@ -91,6 +111,19 @@ export default {
   },
   methods: {
     requiredRule,
+    getInstitutes() {
+      institutesService.get()
+      .then(({ data }) => {
+        this.institutes = data;
+      })
+      .catch((err) => {
+        this.setSnackbar({
+          color: 'error',
+          message: handleErrors(err),
+          show: true,
+        });
+      })
+    },
     searchArticle() {
       this.firstSearch = false;
       this.loading = true;
@@ -110,6 +143,7 @@ export default {
           this.loading = false;
         });
     },
+    ...mapActions('base', ['setSnackbar']),
   },
 };
 </script>
