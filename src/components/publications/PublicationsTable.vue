@@ -34,7 +34,7 @@ export default {
         { text: 'Autor(a)', value: 'autor' },
         { text: 'Área', value: 'area' },
         { text: 'Ano', value: 'ano' },
-        { text: 'Insitituição', value: 'sigla' },
+        { text: 'Insitituição', value: 'instituicao' },
         { text: 'Visualizar', value: 'file_url' },
       ],
     };
