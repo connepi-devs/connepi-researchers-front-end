@@ -64,6 +64,8 @@
 <script>
 import PublicationsTable from '@/components/publications/PublicationsTable.vue';
 import { requiredRule } from '@/utils/validation-rules';
+import publicationsService from '@/services/publications-service';
+import handleErrors from '@/utils/handle-errors';
 
 export default {
   name: 'Search',
@@ -73,13 +75,13 @@ export default {
   data() {
     return {
       filters: [
-        { label: 'Ano', value: 'year' },
-        { label: 'Autor', value: 'author' },
+        { label: 'Ano', value: 'ano' },
+        { label: 'Autor', value: 'autor' },
         { label: 'Área', value: 'area' },
-        { label: 'Instituição', value: 'institute' },
-        { label: 'Título', value: 'title' },
+        { label: 'Instituição', value: 'instituicao_id' },
+        { label: 'Título', value: 'titulo' },
       ],
-      filter: { label: 'Título', value: 'title' },
+      filter: 'titulo',
       firstSearch: true,
       loading: false,
       results: [],
@@ -92,9 +94,21 @@ export default {
     searchArticle() {
       this.firstSearch = false;
       this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 500);
+      const params = `publications[${this.filter}]=${this.search}`;
+      publicationsService.get(params)
+        .then(({ data }) => {
+          this.results = data;
+        })
+        .catch((err) => {
+          this.setSnackbar({
+            color: 'error',
+            message: handleErrors(err),
+            show: true,
+          });
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     },
   },
 };
