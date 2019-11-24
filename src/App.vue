@@ -27,6 +27,15 @@
             Sobre o CONNEPI
           </span>
         </v-btn>
+        <v-btn text @click="$router.push({ name: 'CommunitiesAndCollections' })">
+          <span
+            :class="{
+              'text-underline font-weight-bold': $router.currentRoute.name === 'CommunitiesAndCollections',
+            }"
+          >
+            Comunidades e Coleções
+          </span>
+        </v-btn>
         <v-btn text @click="$router.push({ name: 'Downloads' })">
           <span
             :class="{

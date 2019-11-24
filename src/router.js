@@ -9,6 +9,7 @@ import Search from './views/Search.vue';
 import Publication from './views/Publication.vue';
 import About from './views/About.vue';
 import Downloads from './views/Downloads.vue';
+import CommunitiesAndCollections from './views/CommunitiesAndCollections.vue';
 
 import isAuthenticated from '@/utils/is-authenticated';
 
@@ -68,6 +69,11 @@ const router = new Router({
       props: true,
       name: 'Publication',
       component: Publication,
+    },
+    {
+      path: '/communities-and-collections',
+      name: 'CommunitiesAndCollections',
+      component: CommunitiesAndCollections,
     },
   ],
 });
