@@ -9,26 +9,22 @@
 <script>
 import { sumBy } from 'lodash';
 import Card from '@/components/cards/Card.vue';
-import dashboardService from '@/services/dashboard-service';
 
 export default {
   name: 'Cards',
   components: {
     Card,
   },
+  props: {
+    cardsData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       cards: [],
     };
-  },
-  mounted() {
-    dashboardService.getArticlesCount('group_by=ano')
-      .then(({ data }) => {
-        this.createCards(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
   },
   methods: {
     createCards(data) {
@@ -53,6 +49,11 @@ export default {
       };
 
       this.cards = [...this.cards, totalEvents, totalArticles, articlesAverage];
+    },
+  },
+  watch: {
+    cardsData(val) {
+      this.createCards(val);
     },
   },
 };
