@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-lg fill-height>
-    <v-card width="100%" height="88vh">
+    <v-card width="100%" height="100%">
       <v-card-title class="font-weight-bold">
         Anais das edições do CONNEPI
       </v-card-title>
@@ -9,10 +9,9 @@
           :headers="headers"
           :items="desserts"
           :items-per-page="10"
-          class="elevation-1"
         >
-          <template v-slot:item.url="{ item }">
-            <v-btn @click="download(item.url)" text small>
+          <template v-slot:item.file_url="{ item }">
+            <v-btn @click="download(item.file_url)" text small>
               <v-icon>mdi-download</v-icon>
             </v-btn>
           </template>
@@ -34,81 +33,70 @@ export default {
           sortable: false,
           value: 'name',
         },
-        { text: 'Cidade', value: 'calories' },
-        { text: 'Estado', value: 'fat' },
-        { text: 'Ano', value: 'carbs' },
-        { text: 'Download', value: 'url' },
+        { text: 'Estado', value: 'state' },
+        { text: 'Ano', value: 'year' },
+        { text: 'Download', value: 'file_url' },
       ],
       desserts: [
         {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'RIO GRANDE DO NORTE',
+          year: 2006,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'PARAÍBA',
+          year: 2007,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'CEARÁ',
+          year: 2008,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'ALAGOAS',
+          year: 2010,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'RIO GRANDE DO NORTE',
+          year: 2011,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'TOCANTINS',
+          year: 2012,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'BAHIA',
+          year: 2013,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'MARANHÃO',
+          year: 2014,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'ACRE',
+          year: 2015,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
         {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
+          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
+          state: 'ALAGOAS',
+          year: 2016,
+          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
         },
       ],
     };
