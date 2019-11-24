@@ -54,13 +54,13 @@
             Estatísticas
           </span>
         </v-btn>
-        <v-btn
+        <!-- <v-btn
           v-if="!isAuthenticated()"
           @click="$router.push({ name: 'Login' })"
           text
         >
           Login
-        </v-btn>
+        </v-btn> -->
         <v-btn v-if="isAuthenticated()" title="Sair" text @click="logout">
           <v-icon>mdi-logout</v-icon>
         </v-btn>
