@@ -113,16 +113,16 @@ export default {
     requiredRule,
     getInstitutes() {
       institutesService.get()
-      .then(({ data }) => {
-        this.institutes = data;
-      })
-      .catch((err) => {
-        this.setSnackbar({
-          color: 'error',
-          message: handleErrors(err),
-          show: true,
+        .then(({ data }) => {
+          this.institutes = data;
+        })
+        .catch((err) => {
+          this.setSnackbar({
+            color: 'error',
+            message: handleErrors(err),
+            show: true,
+          });
         });
-      })
     },
     searchArticle() {
       this.firstSearch = false;
