@@ -12,6 +12,7 @@
             :extend="chartExtend"
             :legend="chartSettings.legend"
             :settings="chartSettings"
+            width="120"
           />
         </v-layout>
       </v-container>
@@ -38,9 +39,10 @@ export default {
       legend: {
         type: 'scroll',
         orient: 'vertical',
-        right: 5,
+        right: 40,
         top: 50,
         bottom: 20,
+        fontSize: 10,
       },
       label: {
         normal: {

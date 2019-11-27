@@ -1,9 +1,9 @@
 <template>
-  <v-layout>
-    <v-flex xs4 v-for="card in cards" :key="card.id">
+  <v-row>
+    <v-col cols="4" v-for="card in cards" :key="card.id">
       <card :data="card" />
-    </v-flex>
-  </v-layout>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

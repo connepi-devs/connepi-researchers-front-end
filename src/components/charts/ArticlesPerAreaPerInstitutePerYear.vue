@@ -21,7 +21,7 @@
               @input="filterPerInstitute"
             />
           </v-layout>
-          <ve-histogram :data="chart" />
+          <ve-histogram :data="chart" :width="300" />
         </v-layout>
       </v-container>
     </v-card-text>
