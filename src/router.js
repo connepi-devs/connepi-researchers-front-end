@@ -10,6 +10,7 @@ import Publication from './views/Publication.vue';
 import About from './views/About.vue';
 import Downloads from './views/Downloads.vue';
 import CommunitiesAndCollections from './views/CommunitiesAndCollections.vue';
+import Manage from './views/Manage.vue';
 
 import isAuthenticated from '@/utils/is-authenticated';
 
@@ -74,6 +75,11 @@ const router = new Router({
       path: '/communities-and-collections',
       name: 'CommunitiesAndCollections',
       component: CommunitiesAndCollections,
+    },
+    {
+      path: '/manage',
+      name: 'Manage',
+      component: Manage,
     },
   ],
 });
