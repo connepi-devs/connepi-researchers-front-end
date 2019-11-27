@@ -21,14 +21,12 @@
         <cards :cardsData="articlesPerYear" />
       </v-col>
       <!-- Charts and Tables -->
-      <v-row>
-        <v-col cols="5">
-          <articles-per-area :chartData="articlesPerArea" />
-        </v-col>
-        <v-col cols="7">
-          <institutes-ranking :chartData="totalArticlesPerInstituteData" />
-        </v-col>
-      </v-row>
+      <v-col cols="6">
+        <articles-per-area :chartData="articlesPerArea" />
+      </v-col>
+      <v-col cols="6">
+        <institutes-ranking :chartData="totalArticlesPerInstituteData" />
+      </v-col>
       <v-col cols="12">
         <articles-per-area-per-institute-per-year
           :chartData="articlesPerInstitutePerAreaPerYearWithFilter"

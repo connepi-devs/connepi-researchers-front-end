@@ -1,21 +1,6 @@
 <template>
   <v-container grid-list-lg>
-    <v-layout column>
-      <!-- Cards -->
-      <cards />
-      <!-- Charts and Tables -->
-      <v-layout>
-        <v-flex xs5>
-          <articles-per-area />
-        </v-flex>
-        <v-flex xs7>
-          <institutes-ranking />
-        </v-flex>
-      </v-layout>
-      <articles-per-area-per-institute-per-year />
-      <articles-per-institute />
-      <articles-per-area-per-year />
-    </v-layout>
+    Home
   </v-container>
 </template>
 

@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-lg fill-height>
+    <span class="headline font-weight-black section-title">Downloads</span>
     <v-card width="100%" height="100%">
       <v-card-title class="font-weight-bold">
         Anais das edições do CONNEPI

@@ -1,9 +1,9 @@
 <template>
-  <v-layout>
-    <v-flex xs4 v-for="card in cards" :key="card.id">
+  <v-row>
+    <v-col cols="4" v-for="card in cards" :key="card.id">
       <card :data="card" />
-    </v-flex>
-  </v-layout>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -28,17 +28,19 @@ export default {
   },
   methods: {
     createCards(data) {
+      const totalEvents = {
+        id: 1,
+        cor: 'blue',
+        icone: 'mdi-calendar-check-outline',
+        titulo: 'Total de eventos',
+        total: data.length,
+      };
       const totalArticles = {
+        id: 2,
         cor: 'green',
         icone: 'mdi-file-document-box-check-outline',
         titulo: 'Total de Publicações',
         total: sumBy(data, 'publicacoes'),
-      };
-      const totalEvents = {
-        cor: 'blue',
-        icone: 'mdi-calendar-range-outline',
-        titulo: 'Total de eventos',
-        total: data.length,
       };
       const articlesAverage = {
         id: 3,
