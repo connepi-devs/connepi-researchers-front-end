@@ -9,51 +9,51 @@
 <script>
 import { sumBy } from 'lodash';
 import Card from '@/components/cards/Card.vue';
-import cards from '@/data/cards.json';
-import dashboardService from '@/services/dashboard-service';
 
 export default {
   name: 'Cards',
   components: {
     Card,
   },
+  props: {
+    cardsData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       cards: [],
     };
   },
-  mounted() {
-    dashboardService.getArticlesCount('group_by=ano')
-      .then(({ data }) => {
-        this.createCards(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  },
   methods: {
     createCards(data) {
       const totalArticles = {
-          cor: 'green',
-          icone: 'mdi-file-document-box-check-outline',
-          titulo: 'Total de Publicações',
-          total: sumBy(data, 'publicacoes'),
-        };
-        const totalEvents = {
-          cor: 'blue',
-          icone: 'mdi-calendar-range-outline',
-          titulo: 'Total de eventos',
-          total: data.length,
-        };
-        const articlesAverage = {
-          id: 3,
-          cor: 'orange',
-          icone: 'mdi-file-document-box-multiple-outline',
-          titulo: 'Publicações/Ano',
-          total: Math.round(sumBy(data, 'publicacoes') / data.length),
-        };
+        cor: 'green',
+        icone: 'mdi-file-document-box-check-outline',
+        titulo: 'Total de Publicações',
+        total: sumBy(data, 'publicacoes'),
+      };
+      const totalEvents = {
+        cor: 'blue',
+        icone: 'mdi-calendar-range-outline',
+        titulo: 'Total de eventos',
+        total: data.length,
+      };
+      const articlesAverage = {
+        id: 3,
+        cor: 'orange',
+        icone: 'mdi-file-document-box-multiple-outline',
+        titulo: 'Publicações/Ano',
+        total: Math.round(sumBy(data, 'publicacoes') / data.length),
+      };
 
-        this.cards = [...this.cards, totalEvents, totalArticles, articlesAverage];
+      this.cards = [...this.cards, totalEvents, totalArticles, articlesAverage];
+    },
+  },
+  watch: {
+    cardsData(val) {
+      this.createCards(val);
     },
   },
 };

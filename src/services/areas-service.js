@@ -4,6 +4,6 @@ const axios = axiosInstance;
 
 export default {
   get(queryParams = '') {
-    return axios.get(`/institutions?${queryParams}`);
+    return axios.get(`/areas?${queryParams}`);
   },
 };

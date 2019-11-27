@@ -8,7 +8,7 @@
             <h2>Total de artigos por Área</h2>
           </v-layout>
           <ve-ring
-            :data="chartData"
+            :data="chart"
             :extend="chartExtend"
             :legend="chartSettings.legend"
             :settings="chartSettings"
@@ -20,15 +20,18 @@
 </template>
 
 <script>
-import { orderBy } from 'lodash';
-import dashboardService from '@/services/dashboard-service';
-
 export default {
   name: 'ArticlesPerArea',
+  props: {
+    chartData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     this.chartExtend = {
       series: {
-        center: ['30%', '40%'],
+        center: ['25%', '40%'],
       },
     };
     this.chartSettings = {
@@ -54,24 +57,17 @@ export default {
       },
     };
     return {
-      chartData: {
+      chart: {
         columns: ['area', 'publicacoes'],
         rows: [],
       },
     };
   },
-  mounted() {
-    this.getData();
-  },
-  methods: {
-    getData() {
-      dashboardService.getArticlesCount('group_by=area')
-        .then(({ data }) => {
-          this.chartData.rows = orderBy(data, ['area']);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+  watch: {
+    chartData(val) {
+      if (val.length > 0) {
+        this.chart.rows = val;
+      }
     },
   },
 };
