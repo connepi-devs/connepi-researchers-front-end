@@ -1,71 +1,37 @@
 <template>
   <v-app>
-    <v-app-bar dark color="blue darken-3" app>
-      <span
-        class="toolbar-title headline font-weight-bold clickable"
-        @click="$router.push({ name: 'Home' })"
-      >
-        Repositório CONNEPI
-      </span>
-      <v-spacer />
-      <v-toolbar-items>
-        <v-btn text @click="$router.push({ name: 'Search' })">
-          <span
-            :class="{
-              'text-underline font-weight-bold': $router.currentRoute.name === 'Search',
-            }"
-          >
-            Buscar Publicações
-          </span>
-        </v-btn>
-        <v-btn text @click="$router.push({ name: 'About' })">
-          <span
-            :class="{
-              'text-underline font-weight-bold': $router.currentRoute.name === 'About',
-            }"
-          >
-            Sobre o CONNEPI
-          </span>
-        </v-btn>
-        <v-btn text @click="$router.push({ name: 'CommunitiesAndCollections' })">
-          <span
-            :class="{
-              'text-underline font-weight-bold': $router.currentRoute.name === 'CommunitiesAndCollections',
-            }"
-          >
-            Comunidades e Coleções
-          </span>
-        </v-btn>
-        <v-btn text @click="$router.push({ name: 'Downloads' })">
-          <span
-            :class="{
-              'text-underline font-weight-bold': $router.currentRoute.name === 'Downloads',
-            }"
-          >
-              Downloads
-            </span>
-          </v-btn>
-          <v-btn text @click="$router.push({ name: 'Dashboard' })">
-            <span
-              :class="{
-                'text-underline font-weight-bold': $router.currentRoute.name === 'Dashboard',
-              }"
-            >
-            Estatísticas
-          </span>
-        </v-btn>
-        <!-- <v-btn
-          v-if="!isAuthenticated()"
-          @click="$router.push({ name: 'Login' })"
-          text
+    <v-navigation-drawer
+      app
+      absolute
+      dark
+      color="primary darken-3"
+      permanent
+      height="100%"
+    >
+      <v-list-item class="my-5" @click="$router.push({ name: 'Home' })">
+        <v-list-item-content>
+          <v-list-item-title class="title font-weight-bold">
+            Repositório CONNEPI
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list nav>
+        <v-list-item
+          link
+          v-for="({ label, icon, routeName }, i) in items"
+          :key="i"
+          :to="{name: routeName}"
         >
-          Login
-        </v-btn> -->
-        <v-btn v-if="isAuthenticated()" title="Sair" text @click="logout">
-          <v-icon>mdi-logout</v-icon>
-        </v-btn>
-      </v-toolbar-items>
-    </v-app-bar>
+          <v-list-item-icon>
+            <v-icon>{{ icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ label }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <v-content>
       <router-view />
     </v-content>
@@ -80,7 +46,14 @@ import isAuthenticated from '@/utils/is-authenticated';
 export default {
   name: 'App',
   data: () => ({
-    //
+    items: [
+      { label: 'Publicações', icon: 'mdi-file-outline', routeName: 'Search' },
+      { label: 'Sobre', icon: 'mdi-script-text-outline', routeName: 'About' },
+      { label: 'Coleções', icon: 'mdi-folder-multiple-outline', routeName: 'CommunitiesAndCollections' },
+      { label: 'Downloads', icon: 'mdi-folder-download-outline', routeName: 'Downloads' },
+      { label: 'Estatísticas', icon: 'mdi-chart-line', routeName: 'Dashboard' },
+      { label: 'Gerenciar', icon: 'mdi-account-tie', routeName: 'Manage' },
+    ],
   }),
   components: {
     Snackbar,
@@ -97,6 +70,8 @@ export default {
 
 <style scoped>
   .toolbar-title {
+    margin-top: 64px;
+    color: white;
     width: 100%;
   }
 </style>
