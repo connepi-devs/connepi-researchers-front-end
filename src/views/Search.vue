@@ -129,7 +129,7 @@ export default {
     requiredRule,
     getInstitutesAndAreas() {
       Promise.all([institutesService.get(), areasService.get()])
-        .then(([ institutes, areas ]) => {
+        .then(([institutes, areas]) => {
           this.institutes = institutes.data;
           this.areas = areas.data;
         })
