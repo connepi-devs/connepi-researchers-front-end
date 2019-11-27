@@ -1,5 +1,6 @@
 <template>
   <v-container fill-height grid-list-lg>
+    <span class="headline font-weight-black">Publicações</span>
     <v-card width="100%">
       <v-card-title class="font-weight-bold">Buscar Artigos</v-card-title>
       <v-form @submit.prevent="searchArticle" ref="form" v-model="valid">
@@ -7,7 +8,7 @@
           <v-row>
             <v-col cols="6">
               <v-text-field
-                v-if="filter !== 'instituicao_id'"
+                v-if="filter !== 'instituicao' && filter !== 'area'"
                 v-model="search"
                 label="Digite um termo para pesquisar"
                 outlined
@@ -16,7 +17,7 @@
                 :rules="[requiredRule]"
               />
               <v-autocomplete
-                v-if="filter === 'instituicao_id'"
+                v-if="filter === 'instituicao'"
                 v-model="search"
                 label="Selecione um instituto"
                 outlined
@@ -27,6 +28,20 @@
                 item-value="id"
                 no-data-text="Não foram encontrados institutos com o termo pesquisado"
                 :rules="[requiredRule]"
+                @change="searchArticle"
+              />
+              <v-select
+                v-if="filter === 'area'"
+                v-model="search"
+                label="Selecione uma área do conhecimento"
+                outlined
+                dense
+                clearable
+                :items="areas"
+                item-text="nome"
+                item-value="id"
+                :rules="[requiredRule]"
+                @change="searchArticle"
               />
             </v-col>
             <v-col cols="3">
@@ -82,6 +97,7 @@ import { requiredRule } from '@/utils/validation-rules';
 import handleErrors from '@/utils/handle-errors';
 import publicationsService from '@/services/publications-service';
 import institutesService from '@/services/institute-service';
+import areasService from '@/services/areas-service';
 
 export default {
   name: 'Search',
@@ -89,15 +105,15 @@ export default {
     PublicationsTable,
   },
   created() {
-    this.getInstitutes();
+    this.getInstitutesAndAreas();
   },
   data() {
     return {
       filters: [
         { label: 'Ano', value: 'ano' },
         { label: 'Autor', value: 'autor' },
-        { label: 'Área', value: 'area_id' },
-        { label: 'Instituição', value: 'instituicao_id' },
+        { label: 'Área', value: 'area' },
+        { label: 'Instituição', value: 'instituicao' },
         { label: 'Título', value: 'titulo' },
       ],
       institutes: [],
@@ -111,10 +127,11 @@ export default {
   },
   methods: {
     requiredRule,
-    getInstitutes() {
-      institutesService.get()
-        .then(({ data }) => {
-          this.institutes = data;
+    getInstitutesAndAreas() {
+      Promise.all([institutesService.get(), areasService.get()])
+        .then(([ institutes, areas ]) => {
+          this.institutes = institutes.data;
+          this.areas = areas.data;
         })
         .catch((err) => {
           this.setSnackbar({
