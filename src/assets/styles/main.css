@@ -14,6 +14,10 @@ body {
   cursor: pointer;
 }
 
+.section-title {
+  margin: 64px 0;
+}
+
 /* Layout */
 
 .flex {
@@ -70,10 +74,4 @@ body {
 
 .wrap-reverse {
   flex-wrap: wrap-reverse;
-}
-
-.bridgeu-container {
-  width: 70vw;
-  min-height: calc(100vh - 64px);
-  padding-top: 60pt;
 }
