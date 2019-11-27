@@ -44,7 +44,11 @@
             </v-col>
             <v-col cols="6">
               <div class="flex justify-end">
-                <img width="400" src="@/assets/images/connepi-researchers.png" alt="Pesquisadores" />
+                <img
+                  width="400"
+                  src="@/assets/images/connepi-researchers.png"
+                  alt="Pesquisadores"
+                />
               </div>
             </v-col>
           </v-row>
@@ -133,6 +137,6 @@ export default {
     setTimeout(() => {
       this.mounted = true;
     }, 200);
-  }
+  },
 };
 </script>
