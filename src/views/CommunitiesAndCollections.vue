@@ -1,7 +1,8 @@
 <template>
-  <v-container grid-list-lg>
-    <v-card width="100%" height="100%">
-      <v-card-title>Comunidades e Coleções</v-card-title>
+  <v-container fill-height grid-list-lg>
+    <span class="headline font-weight-black section-title">Comunidades e coleções</span>
+    <v-card min-height="70%" width="100%">
+      <v-card-title>Coleção: CONNEPI</v-card-title>
       <v-card-text>
         <v-expansion-panels focusable>
           <v-expansion-panel

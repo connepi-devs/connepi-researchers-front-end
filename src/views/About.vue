@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-lg fill-height>
+    <span class="headline font-weight-black section-title">Sobre o CONNEPI</span>
     <v-row justify="center" align="center">
       <v-carousel cycle>
         <v-carousel-item
