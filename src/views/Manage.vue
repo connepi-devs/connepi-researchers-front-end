@@ -17,17 +17,20 @@
                 </a>
               </li>
               <li>Preencha a planilha com os dados do evento ao qual está cadastrando</li>
-              <li>Faça upload da planilha preenchida no campo abaixo:</li>
-              <div class="upload-field mt-3">
-                <v-file-input
-                  v-model="file"
-                  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                  outlined
-                  label="Selecionar arquivo preenchido"
-                  :rules=[requiredRule]
-                  clearable
-                />
-              </div>
+              <li>
+                Faça upload da planilha preenchida no campo abaixo:
+                <div class="upload-field mt-3">
+                  <v-file-input
+                    style="margin-left: -24px"
+                    v-model="file"
+                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    outlined
+                    label="Selecionar arquivo preenchido"
+                    :rules=[requiredRule]
+                    clearable
+                  />
+                </div>
+              </li>
               <li>Clique no botão enviar para enviar os dados do evento</li>
             </ol>
           </v-card-text>
