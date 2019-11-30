@@ -83,6 +83,15 @@
                 </span>
                 <publications-table v-if="results.length > 0 && !loading" :publications="results" />
               </div>
+              <div class="flex justify-center subtitle-1">
+                <span>Encontrou alguma inconsistência? Fale conosco no email&nbsp;</span>
+                <a
+                  class="primary--text"
+                  href="mailto:connepirep@gmail.com"
+                >
+                  connepirep@gmail.com
+                </a>
+              </div>
             </v-col>
           </v-row>
         </v-card-text>
