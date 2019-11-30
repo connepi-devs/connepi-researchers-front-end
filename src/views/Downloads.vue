@@ -3,7 +3,7 @@
     <span class="headline font-weight-black section-title">Downloads</span>
     <v-row class="fill-height" align="start">
       <v-card width="100%">
-        <v-card-title class="font-weight-bold">
+        <v-card-title class="title font-weight-bold">
           Anais das edições do CONNEPI
         </v-card-title>
         <v-card-text>

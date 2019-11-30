@@ -3,7 +3,9 @@
     <v-card-text>
       <v-container>
         <v-layout column>
-          <h2 class="mt-2 mb-4">Total de artigos por área por ano</h2>
+          <h2 class="mt-2 mb-4 title font-weight-bold">
+            Total de artigos por área por ano
+          </h2>
           <ve-line :data="chart" />
         </v-layout>
       </v-container>

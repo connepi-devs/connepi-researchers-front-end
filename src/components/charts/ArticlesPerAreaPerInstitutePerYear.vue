@@ -8,7 +8,9 @@
       <v-container>
         <v-layout column>
           <v-layout class="mt-2 mb-4">
-            <h2>Total de artigos por área por IF por ano</h2>
+            <h2 class="font-weight-bold title">
+              Total de artigos por área por IF por ano
+            </h2>
             <v-spacer />
             <v-autocomplete
               v-model="filter"
