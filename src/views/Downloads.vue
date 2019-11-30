@@ -1,24 +1,26 @@
 <template>
   <v-container grid-list-lg fill-height>
     <span class="headline font-weight-black section-title">Downloads</span>
-    <v-card width="100%" height="100%">
-      <v-card-title class="font-weight-bold">
-        Anais das edições do CONNEPI
-      </v-card-title>
-      <v-card-text>
-        <v-data-table
-          :headers="headers"
-          :items="desserts"
-          :items-per-page="10"
-        >
-          <template v-slot:item.file_url="{ item }">
-            <v-btn @click="download(item.file_url)" text small>
-              <v-icon>mdi-download</v-icon>
-            </v-btn>
-          </template>
-        </v-data-table>
-      </v-card-text>
-    </v-card>
+    <v-row class="fill-height" align="start">
+      <v-card width="100%">
+        <v-card-title class="font-weight-bold">
+          Anais das edições do CONNEPI
+        </v-card-title>
+        <v-card-text>
+          <v-data-table
+            :headers="headers"
+            :items="desserts"
+            :items-per-page="8"
+          >
+            <template v-slot:item.file_url="{ item }">
+              <v-btn @click="download(item.file_url)" text small>
+                <v-icon>mdi-download</v-icon>
+              </v-btn>
+            </template>
+          </v-data-table>
+        </v-card-text>
+      </v-card>
+    </v-row>
   </v-container>
 </template>
 
