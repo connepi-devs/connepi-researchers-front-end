@@ -3,7 +3,7 @@
     <span class="headline font-weight-black section-title">
       Gerenciar
     </span>
-    <v-row class="fill-height">
+    <v-row class="fill-height" justify="start">
       <v-card max-height="60%" width="100%">
         <v-card-title class="title font-weight-bold">Submeter Evento</v-card-title>
         <v-form ref="form" v-model="valid">
