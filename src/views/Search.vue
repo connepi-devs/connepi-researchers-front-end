@@ -53,6 +53,7 @@
                 label="Filtrar por"
                 outlined
                 dense
+                @change="search = ''"
               />
             </v-col>
             <v-col cols="3">
