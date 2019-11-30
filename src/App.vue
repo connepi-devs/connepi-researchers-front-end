@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="overflow: hidden">
     <v-navigation-drawer
       app
       absolute
@@ -32,7 +32,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-content>
+    <v-content style="overflow-y: scroll; max-height: 100vh; max-width: 100%">
       <router-view />
     </v-content>
     <snackbar />
