@@ -23,7 +23,7 @@
         </v-carousel-item>
       </v-carousel> -->
       <v-scroll-x-reverse-transition>
-        <v-col v-if="mounted" class="mt-5" cols="12">
+        <v-col v-if="mounted" cols="12">
           <v-row justify="space-between">
             <v-col cols="6" align-center>
               <div class="flex column justify-center fill-height">
