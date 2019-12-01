@@ -1,6 +1,6 @@
 <template>
   <v-app style="overflow: hidden">
-    <v-toolbar app color="primary" dark v-if="$vuetify.breakpoint.smAndDown">
+    <v-app-bar app fixed color="primary" dark v-if="$vuetify.breakpoint.smAndDown">
       <v-toolbar-content>
         <div class="flex align-center">
           <v-btn @click="sidebar = !sidebar" icon>
@@ -11,7 +11,7 @@
           </div>
         </div>
       </v-toolbar-content>
-    </v-toolbar>
+    </v-app-bar>
     <v-navigation-drawer
       v-model="sidebar"
       app
@@ -55,6 +55,18 @@
     </v-navigation-drawer>
     <v-content class="app-content">
       <router-view />
+      <v-btn
+        v-if="$vuetify.breakpoint.smAndDown"
+        @click="$vuetify.goTo(0)"
+        color="grey darken-1"
+        dark
+        fixed
+        fab
+        bottom
+        right
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
     </v-content>
     <snackbar />
   </v-app>
@@ -67,7 +79,7 @@ import isAuthenticated from '@/utils/is-authenticated';
 export default {
   name: 'App',
   created() {
-    if (this.$vuetify.breakpoint.smAndDown) {
+    if (this.$vuetify.breakpoint.xs) {
       this.sidebar = false;
     }
   },
