@@ -3,8 +3,15 @@
     <v-app-bar app fixed color="primary" dark v-if="$vuetify.breakpoint.smAndDown">
       <v-toolbar-content>
         <div class="flex align-center">
-          <v-btn @click="sidebar = !sidebar" icon>
-            <v-icon>mdi-menu</v-icon>
+          <v-btn
+            dark
+            color="white"
+            class="mr-2 primary--text"
+            small
+            @click="sidebar = !sidebar"
+          >
+            <v-icon left>mdi-menu</v-icon>
+            Menu
           </v-btn>
           <div class="flex justify-center font-weight-bold">
             Repositório CONNEPI
@@ -53,7 +60,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-content class="app-content">
+    <v-content :class="{'app-content': $vuetify.breakpoint.smAndUp}">
       <router-view />
       <v-btn
         v-if="$vuetify.breakpoint.smAndDown"
