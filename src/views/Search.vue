@@ -1,8 +1,12 @@
 <template>
-  <v-container fill-height grid-list-lg>
-    <span class="headline font-weight-black section-title">Publicações</span>
-    <v-card width="100%">
-      <v-card-title class="title font-weight-bold">Buscar Artigos</v-card-title>
+  <v-container grid-list-lg>
+    <div class="headline font-weight-black section-title">
+      Publicações
+    </div>
+    <v-card class="app-cards" outlined width="100%">
+      <v-card-title class="title font-weight-bold primary white--text">
+        Buscar Artigos
+      </v-card-title>
       <v-form @submit.prevent="searchArticle" ref="form" v-model="valid">
         <v-card-text>
           <v-row>

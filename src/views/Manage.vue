@@ -1,13 +1,17 @@
 <template>
-  <v-container grid-list-lg fill-height>
-    <span class="headline font-weight-black section-title">
+  <v-container grid-list-lg>
+    <div class="headline font-weight-black section-title">
       Gerenciar
-    </span>
+    </div>
     <v-row class="fill-height" justify="start">
-      <v-card max-height="60%" width="100%">
-        <v-card-title class="title font-weight-bold">Submeter Evento</v-card-title>
+      <v-card outlined max-height="60%" width="100%">
+        <v-card-title 
+          class="title primary font-weight-bold white--text"
+        >
+          Submeter Evento
+        </v-card-title>
         <v-form ref="form" v-model="valid">
-          <v-card-text class="black--text">
+          <v-card-text class="black--text mt-5">
             <p class="title mt-5">Para submeter um evento siga as instruções abaixo:</p>
             <ol class="subtitle-1">
               <li>

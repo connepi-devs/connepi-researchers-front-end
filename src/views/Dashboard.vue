@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-lg>
+  <v-container style="margin-top: -50px" grid-list-lg>
     <v-dialog v-model="loading" fullscreen>
       <v-card>
         <v-card-text>

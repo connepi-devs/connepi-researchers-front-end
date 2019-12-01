@@ -1,10 +1,14 @@
 <template>
-  <v-container fill-height grid-list-lg>
-    <span class="headline font-weight-black section-title">Comunidades e coleções</span>
+  <v-container grid-list-lg>
+    <div class="headline font-weight-black section-title">Comunidades e coleções</div>
     <v-row class="fill-height" align="start">
       <v-card width="100%">
-        <v-card-title class="title font-weight-bold">Coleção: CONNEPI</v-card-title>
-        <v-card-text>
+        <v-card-title
+          class="title font-weight-bold primary white--text"
+        >
+          Coleção: CONNEPI
+        </v-card-title>
+        <v-card-text class="mt-5">
           <v-expansion-panels focusable>
             <v-expansion-panel
               v-for="(item,i) in 4"

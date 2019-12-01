@@ -1,12 +1,14 @@
 <template>
-  <v-container grid-list-lg fill-height>
-    <span class="headline font-weight-black section-title">Downloads</span>
+  <v-container grid-list-lg>
+    <div class="headline font-weight-black section-title">
+      Downloads
+    </div>
     <v-row class="fill-height" align="start">
-      <v-card width="100%">
-        <v-card-title class="title font-weight-bold">
+      <v-card outlined width="100%">
+        <v-card-title class="title font-weight-bold primary white--text">
           Anais das edições do CONNEPI
         </v-card-title>
-        <v-card-text>
+        <v-card-text class="mt-5">
           <v-data-table
             :headers="headers"
             :items="desserts"
