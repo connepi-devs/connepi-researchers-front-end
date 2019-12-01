@@ -87,7 +87,7 @@
                     <span class="headline text-center" v-if="!firstSearch && results.length === 0 && !loading">
                       Não foram encontradas publicações com o termo e filtro pesquisado
                     </span>
-                    <publications-table v-if="results.length > 0 && !loading" :publications="results" />
+                    <publications-table style="max-width: 100%" v-if="results.length > 0 && !loading" :publications="results" />
                   </div>
                   <div
                     class="flex justify-center subtitle-1"
