@@ -24,11 +24,21 @@
             </v-col>
             <v-col cols="6">
               <div class="flex justify-end">
-                <img
+                <v-img
                   width="400"
                   src="@/assets/images/connepi-researchers.png"
                   alt="Pesquisadores"
-                />
+                >
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
               </div>
             </v-col>
           </v-row>
@@ -38,11 +48,21 @@
         <v-col v-if="mounted" class="mt-5" cols="12">
           <v-row justify="space-between">
             <v-col cols="6">
-              <img
+              <v-img
                 width="400"
                 src="@/assets/images/connepi-presentation.png"
                 alt="Apresentação de trabalho"
-              />
+              >
+                <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                    </v-row>
+                  </template>
+              </v-img>
             </v-col>
             <v-col cols="6" align-center>
               <div class="flex column justify-center fill-height">
@@ -86,11 +106,21 @@
             </v-col>
             <v-col cols="6">
               <div class="flex justify-end">
-                <img
+                <v-img
                   width="400"
                   src="@/assets/images/connepi-banners.png"
                   alt="Apresentação de Banners"
-                />
+                >
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
               </div>
             </v-col>
           </v-row>
