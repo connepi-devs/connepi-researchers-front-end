@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="0" max-height="370">
+  <v-card elevation="0" :max-height="$vuetify.breakpoint.smAndup ? 370: '100%'">
     <v-card-text>
       <v-container>
         <v-layout column>
@@ -50,7 +50,7 @@ export default {
       data: [],
       headers: [
         {
-          text: '',
+          text: this.$vuetify.breakpoint.smAndUp ? '' : 'Posição',
           align: 'center',
           sortable: false,
           value: 'posicao',
