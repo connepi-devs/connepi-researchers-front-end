@@ -13,6 +13,7 @@
             :legend="chartSettings.legend"
             :settings="chartSettings"
             width="100"
+            :after-config="afterConfig"
           />
         </v-layout>
       </v-container>
@@ -36,7 +37,7 @@ export default {
       },
     };
     this.chartSettings = {
-      radius: this.$vuetify.breakpoint.xs ? ['55%', '65%'] : ['30%', '45%'],
+      radius: this.$vuetify.breakpoint.xs ? ['60%', '70%'] : ['30%', '45%'],
       legend: {
         type: this.$vuetify.breakpoint.xs ? 'scroll' : '',
         orient: this.$vuetify.breakpoint.xs ? 'horizontal' : 'vertical',
@@ -65,6 +66,12 @@ export default {
         rows: [],
       },
     };
+  },
+  methods: {
+    afterConfig(options) {
+      options.tooltip.position = this.$vuetify.breakpoint.xs ? (pt) =>  (['-10%', pt[1]]) : options.tooltip.position;
+      return options;
+    },
   },
   watch: {
     chartData(val) {

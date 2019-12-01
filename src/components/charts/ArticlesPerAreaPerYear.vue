@@ -9,7 +9,11 @@
           >
             Total de artigos por área por ano
           </h2>
-          <ve-line :data="chart" :legend="chartSettings.legend" />
+          <ve-line
+            :data="chart"
+            :legend="chartSettings.legend"
+            :after-config="afterConfig"
+          />
         </v-layout>
       </v-container>
     </v-card-text>
@@ -51,6 +55,12 @@ export default {
         rows: [],
       },
     };
+  },
+  methods: {
+    afterConfig(options) {
+      options.tooltip.position = this.$vuetify.breakpoint.xs ? (pt) =>  (['0%', '10%']) : options.tooltip.position;
+      return options;
+    },
   },
   watch: {
     chartData(val) {

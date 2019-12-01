@@ -9,7 +9,12 @@
           >
             Total de artigos por IF
           </h2>
-          <ve-histogram :data="chart" />
+          <ve-bar
+            height="600px"
+            :data="chart"
+            :settings="chartSettings"
+            :after-config="afterConfig"
+          />
         </v-layout>
       </v-container>
     </v-card-text>
@@ -22,6 +27,11 @@ import { orderBy } from 'lodash';
 export default {
   name: 'ArticlesPerInstitute',
   data() {
+    this.chartSettings = {
+      label: {
+        normal: { show: true, position: "right" }
+      },
+    };
     return {
       chart: {
         columns: ['instituicao', 'publicacoes'],
@@ -33,6 +43,12 @@ export default {
     chartData: {
       type: Array,
       default: () => [],
+    },
+  },
+  methods: {
+    afterConfig(options) {
+      options.tooltip.position = this.$vuetify.breakpoint.xs ? (pt) =>  (['0%', pt[1]]) : options.tooltip.position;
+      return options;
     },
   },
   watch: {

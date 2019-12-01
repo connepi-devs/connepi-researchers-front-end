@@ -29,7 +29,13 @@
             />
           </v-col>
           <v-col cols="12">
-            <ve-histogram :data="chart" :legend="chartSettings.legend" :width="300" />
+            <ve-bar
+              :data="chart"
+              height="1000px"
+              :legend="chartSettings.legend"
+              :settings="chartSettings"
+              :after-config="afterConfig"
+            />
           </v-col>
         </v-row>
       </v-container>
@@ -44,6 +50,9 @@ export default {
   name: 'ArticlesPerAreaPerInstitutePerYear',
   data() {
     this.chartSettings = {
+      label: {
+        normal: { show: true, position: "right" }
+      },
       legend: {
         type: this.$vuetify.breakpoint.xs ? 'scroll' : '',
       },
@@ -82,6 +91,10 @@ export default {
   methods: {
     filterPerInstitute() {
       this.$emit('filter', this.params);
+    },
+    afterConfig(options) {
+      options.tooltip.position = this.$vuetify.breakpoint.xs ? (pt) =>  (['0%', pt[1]]) : options.tooltip.position;
+      return options;
     },
   },
   computed: {
