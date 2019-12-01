@@ -5,7 +5,7 @@
     </div>
     <v-row class="fill-height" justify="start">
       <v-card outlined max-height="60%" width="100%">
-        <v-card-title 
+        <v-card-title
           class="title primary font-weight-bold white--text"
         >
           Submeter Evento

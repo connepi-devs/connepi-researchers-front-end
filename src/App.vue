@@ -82,7 +82,7 @@ export default {
     width: 100%;
   }
   .app-content {
-    margin: 50px 30px; 
+    margin: 50px 30px;
     max-width: 100%;
   }
 </style>
