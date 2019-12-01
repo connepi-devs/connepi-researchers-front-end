@@ -14,8 +14,9 @@
           </v-card-title>
           <v-card-text class="mt-5">
             <v-data-table
+              v-if="$vuetify.breakpoint.smAndUp"
               :headers="headers"
-              :items="desserts"
+              :items="rows"
               :items-per-page="8"
             >
               <template v-slot:item.file_url="{ item }">
@@ -24,6 +25,33 @@
                 </v-btn>
               </template>
             </v-data-table>
+            <template v-if="$vuetify.breakpoint.xs">
+              <v-card
+                @click="download"
+                class="mb-4"
+                v-for="row in rows"
+                :key="row.id"
+              >
+                <v-card-title
+                  class="primary darken-2 white--text"
+                  style="word-break: break-word"
+                >
+                  {{ row.name }}
+                </v-card-title>
+                <v-card-text>
+                  <div class="flex column">
+                    <div class="flex py-1">
+                      <strong>Estado:&nbsp;</strong>
+                      <span>{{ row.state }}</span>
+                    </div>
+                    <div class="flex py-1">
+                      <strong>Ano:&nbsp;</strong>
+                      <span>{{ row.year }}</span>
+                    </div>
+                  </div>
+                </v-card-text>
+              </v-card>
+            </template>
           </v-card-text>
         </v-card>
       </v-col>
@@ -47,7 +75,7 @@ export default {
         { text: 'Ano', value: 'year' },
         { text: 'Download', value: 'file_url' },
       ],
-      desserts: [
+      rows: [
         {
           name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
           state: 'RIO GRANDE DO NORTE',
