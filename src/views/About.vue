@@ -1,27 +1,7 @@
 <template>
-  <v-container grid-list-lg fill-height>
+  <v-container grid-list-lg>
     <span class="headline font-weight-black section-title">Sobre o CONNEPI</span>
     <v-row justify="center" align="center">
-      <!-- <v-carousel cycle>
-        <v-carousel-item
-        v-for="(color, i) in colors"
-        :key="color"
-        >
-          <v-sheet
-            :color="color"
-            height="100%"
-            tile
-          >
-            <v-row
-              class="fill-height"
-              align="center"
-              justify="center"
-            >
-              <div class="display-3">Imagem {{ i + 1 }}</div>
-            </v-row>
-          </v-sheet>
-        </v-carousel-item>
-      </v-carousel> -->
       <v-scroll-x-reverse-transition>
         <v-col v-if="mounted" cols="12">
           <v-row justify="space-between">
