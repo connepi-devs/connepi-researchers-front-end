@@ -12,7 +12,7 @@
             :extend="chartExtend"
             :legend="chartSettings.legend"
             :settings="chartSettings"
-            width="120"
+            width="100"
           />
         </v-layout>
       </v-container>
@@ -32,14 +32,15 @@ export default {
   data() {
     this.chartExtend = {
       series: {
-        center: ['25%', '40%'],
+        center: ['22%', '38%'],
       },
     };
     this.chartSettings = {
+      radius: ['30%', '45%'],
       legend: {
         type: 'scroll',
         orient: 'vertical',
-        right: 40,
+        right: 20,
         top: 50,
         bottom: 20,
         fontSize: 10,
@@ -52,7 +53,7 @@ export default {
         emphasis: {
           show: true,
           textStyle: {
-            fontSize: '10',
+            fontSize: 7,
             fontWeight: 'bold',
           },
         },
