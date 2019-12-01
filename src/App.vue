@@ -3,7 +3,13 @@
     <v-app-bar app fixed color="primary" dark v-if="$vuetify.breakpoint.smAndDown">
       <v-toolbar-content>
         <div class="flex align-center">
-          <v-btn class="mr-2" small outlined @click="sidebar = !sidebar">
+          <v-btn
+            dark
+            color="white"
+            class="mr-2 primary--text"
+            small
+            @click="sidebar = !sidebar"
+          >
             <v-icon left>mdi-menu</v-icon>
             Menu
           </v-btn>
