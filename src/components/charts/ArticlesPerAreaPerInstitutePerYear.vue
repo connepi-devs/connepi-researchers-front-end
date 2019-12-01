@@ -45,8 +45,7 @@ export default {
   data() {
     this.chartSettings = {
       legend: {
-        type: 'scroll',
-        orient: this.$vuetify.breakpoint.xs ? 'horizontal' : 'vertical',
+        type: this.$vuetify.breakpoint.xs ? 'scroll' : '',
       },
     };
     return {

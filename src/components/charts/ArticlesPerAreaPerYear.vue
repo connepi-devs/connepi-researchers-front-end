@@ -3,10 +3,13 @@
     <v-card-text>
       <v-container>
         <v-layout column>
-          <h2 class="mt-2 mb-4 title font-weight-bold">
+          <h2
+            class="mt-2 mb-4 title font-weight-bold"
+            :class="{'text-center': $vuetify.breakpoint.xs}"
+          >
             Total de artigos por área por ano
           </h2>
-          <ve-line :data="chart" />
+          <ve-line :data="chart" :legend="chartSettings.legend" />
         </v-layout>
       </v-container>
     </v-card-text>
@@ -25,6 +28,11 @@ export default {
     },
   },
   data() {
+    this.chartSettings = {
+      legend: {
+        type: this.$vuetify.breakpoint.xs ? 'scroll' : '',
+      },
+    };
     return {
       rows: [],
       chart: {

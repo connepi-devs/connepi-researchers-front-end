@@ -38,7 +38,7 @@ export default {
     this.chartSettings = {
       radius: this.$vuetify.breakpoint.xs ? ['55%', '65%'] : ['30%', '45%'],
       legend: {
-        type: 'scroll',
+        type: this.$vuetify.breakpoint.xs ? 'scroll' : '',
         orient: this.$vuetify.breakpoint.xs ? 'horizontal' : 'vertical',
         right: 20,
         top: this.$vuetify.breakpoint.xs ? 20 : 50,
