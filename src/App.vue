@@ -1,11 +1,25 @@
 <template>
   <v-app style="overflow: hidden">
+    <v-toolbar app color="primary" dark v-if="$vuetify.breakpoint.smAndDown">
+      <v-toolbar-content>
+        <div class="flex align-center">
+          <v-btn @click="sidebar = !sidebar" icon>
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+          <div class="flex justify-center font-weight-bold">
+            Repositório CONNEPI
+          </div>
+        </div>
+      </v-toolbar-content>
+    </v-toolbar>
     <v-navigation-drawer
+      v-model="sidebar"
       app
       fixed
       dark
       color="primary darken-3"
-      permanent
+      :permanent="$vuetify.breakpoint.mdAndUp"
+      :temporary="$vuetify.breakpoint.smAndDown"
       height="100%"
       src="@/assets/images/sidebar-background.png"
     >
@@ -52,7 +66,13 @@ import isAuthenticated from '@/utils/is-authenticated';
 
 export default {
   name: 'App',
+  created() {
+    if (this.$vuetify.breakpoint.smAndDown) {
+      this.sidebar = false;
+    }
+  },
   data: () => ({
+    sidebar: true,
     items: [
       { label: 'Publicações', icon: 'mdi-file-outline', routeName: 'Search' },
       { label: 'Sobre', icon: 'mdi-script-text-outline', routeName: 'About' },
