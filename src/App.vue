@@ -54,7 +54,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-content class="app-content">
+    <v-content :class="{'app-content': $vuetify.breakpoint.smAndUp}">
       <router-view />
       <v-btn
         v-if="$vuetify.breakpoint.smAndDown"

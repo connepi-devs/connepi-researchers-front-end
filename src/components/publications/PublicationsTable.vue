@@ -15,9 +15,12 @@
           :headers="headers"
           :items="publications"
           calculate-widths
-          fixed-header
-          height="300px"
+          :fixed-header="$vuetify.breakpoint.smAndUp"
+          :height="$vuetify.breakpoint.smAndUp ? '300px' : ''"
           :search="search"
+          :disable-pagination="$vuetify.breakpoint.xs || $vuetify.breakpoint.lg"
+          :hide-default-footer="$vuetify.breakpoint.xs || $vuetify.breakpoint.lg"
+          no-data-text="Sem resultados para a filtragem realizada"
         >
           <template v-slot:item.file_url="{ item }">
             <v-btn text small>
