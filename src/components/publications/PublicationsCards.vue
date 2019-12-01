@@ -6,7 +6,7 @@
       :key="publication.id"
     >
       <v-card @click="show">
-        <v-card-title class="primary white--text">
+        <v-card-title class="primary darken-2 white--text">
           {{ publication.titulo }}
         </v-card-title>
         <v-card-text class="mt-5">
