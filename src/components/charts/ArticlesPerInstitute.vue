@@ -3,7 +3,10 @@
     <v-card-text>
       <v-container>
         <v-layout column>
-          <h2 class="mt-2 mb-4 title font-weight-bold">
+          <h2
+            class="mt-2 mb-4 title font-weight-bold"
+            :class="{'text-center': $vuetify.breakpoint.xs}"
+          >
             Total de artigos por IF
           </h2>
           <ve-histogram :data="chart" />

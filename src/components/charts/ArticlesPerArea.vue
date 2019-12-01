@@ -32,17 +32,17 @@ export default {
   data() {
     this.chartExtend = {
       series: {
-        center: ['22%', '38%'],
+        center: this.$vuetify.breakpoint.xs ? ['50%', '45%'] : ['22%', '38%'],
       },
     };
     this.chartSettings = {
-      radius: ['30%', '45%'],
+      radius: this.$vuetify.breakpoint.xs ? ['55%', '65%'] : ['30%', '45%'],
       legend: {
-        type: 'scroll',
-        orient: 'vertical',
+        type: this.$vuetify.breakpoint.xs ? 'scroll' : '',
+        orient: this.$vuetify.breakpoint.xs ? 'horizontal' : 'vertical',
         right: 20,
-        top: 50,
-        bottom: 20,
+        top: this.$vuetify.breakpoint.xs ? 20 : 50,
+        bottom: 200,
         fontSize: 10,
       },
       label: {
@@ -53,7 +53,7 @@ export default {
         emphasis: {
           show: true,
           textStyle: {
-            fontSize: 7,
+            fontSize: this.$vuetify.breakpoint.xs ? 9 : 7,
             fontWeight: 'bold',
           },
         },

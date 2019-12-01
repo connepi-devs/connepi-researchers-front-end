@@ -6,12 +6,17 @@
     </div>
     <v-card-text>
       <v-container>
-        <v-layout column>
-          <v-layout class="mt-2 mb-4">
-            <h2 class="font-weight-bold title">
+        <v-row column>
+          <v-col cols="12" md="6" class="mt-2 mb-4">
+            <h2
+              class="font-weight-bold title"
+              :class="{'text-center': $vuetify.breakpoint.xs}"
+            >
               Total de artigos por área por IF por ano
             </h2>
+          </v-col>
             <v-spacer />
+          <v-col cols="12" md="6">
             <v-autocomplete
               v-model="filter"
               label="Filtrar por Instituição"
@@ -22,9 +27,11 @@
               return-object
               @input="filterPerInstitute"
             />
-          </v-layout>
-          <ve-histogram :data="chart" :width="300" />
-        </v-layout>
+          </v-col>
+          <v-col cols="12">
+            <ve-histogram :data="chart" :legend="chartSettings.legend" :width="300" />
+          </v-col>
+        </v-row>
       </v-container>
     </v-card-text>
   </v-card>
@@ -36,6 +43,11 @@ import { orderBy } from 'lodash';
 export default {
   name: 'ArticlesPerAreaPerInstitutePerYear',
   data() {
+    this.chartSettings = {
+      legend: {
+        type: this.$vuetify.breakpoint.xs ? 'scroll' : '',
+      },
+    };
     return {
       chart: {
         columns: [
