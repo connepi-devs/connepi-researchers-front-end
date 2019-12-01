@@ -87,10 +87,19 @@
                     <span class="headline text-center" v-if="!firstSearch && results.length === 0 && !loading">
                       Não foram encontradas publicações com o termo e filtro pesquisado
                     </span>
-                    <publications-table style="max-width: 100%" v-if="results.length > 0 && !loading" :publications="results" />
+                    <publications-table
+                      style="max-width: 100%"
+                      v-if="results.length > 0 && !loading && $vuetify.breakpoint.smAndUp"
+                      :publications="results"
+                    />
+                    <publications-cards
+                      style="max-width: 100%"
+                      v-if="results.length > 0 && !loading && $vuetify.breakpoint.xs"
+                      :publications="results"
+                    />
                   </div>
                   <div
-                    class="flex justify-center subtitle-1"
+                    class="flex justify-center subtitle-1 mt-3"
                     :class="{'column align-center text-center': $vuetify.breakpoint.xs}"
                   >
                     <span>Encontrou alguma inconsistência? Fale conosco no email&nbsp;</span>
@@ -113,6 +122,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import PublicationsCards from '@/components/publications/PublicationsCards.vue';
 import PublicationsTable from '@/components/publications/PublicationsTable.vue';
 import { requiredRule } from '@/utils/validation-rules';
 import handleErrors from '@/utils/handle-errors';
@@ -123,6 +133,7 @@ import areasService from '@/services/areas-service';
 export default {
   name: 'Search',
   components: {
+    PublicationsCards,
     PublicationsTable,
   },
   created() {
