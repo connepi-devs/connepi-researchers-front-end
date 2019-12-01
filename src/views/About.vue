@@ -1,13 +1,21 @@
 <template>
   <v-container grid-list-lg>
-    <span class="headline font-weight-black section-title">Sobre o CONNEPI</span>
+    <div
+      class="headline font-weight-black section-title"
+      :class="{'text-center': $vuetify.breakpoint.xs}"
+    >
+      Sobre o CONNEPI
+    </div>
     <v-row justify="center" align="center">
       <v-scroll-x-reverse-transition>
         <v-col v-if="mounted" cols="12">
           <v-row justify="space-between">
-            <v-col cols="6" align-center>
+            <v-col cols="12" md="6" align-center>
               <div class="flex column justify-center fill-height">
-                <div class="headline font-weight-bold">
+                <div
+                  class="headline font-weight-bold"
+                  :class="{'text-center': $vuetify.breakpoint.xs}"
+                >
                   O Congresso Norte Nordeste de Pesquisa e Inovação:
                   <span class="primary--text"> CONNEPI</span>
                 </div>
@@ -22,7 +30,7 @@
                 </div>
               </div>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="12" md="6">
               <div class="flex justify-end">
                 <v-img
                   width="400"
@@ -47,9 +55,9 @@
       <v-scroll-x-reverse-transition>
         <v-col v-if="mounted" class="mt-5" cols="12">
           <v-row justify="space-between">
-            <v-col cols="6">
+            <v-col cols="12" md="6" :order="$vuetify.breakpoint.mdAndDown ? 2 : ''">
               <v-img
-                width="400"
+                :width="$vuetify.breakpoint.smAndDown ? '100%' : 400"
                 src="@/assets/images/connepi-presentation.png"
                 alt="Apresentação de trabalho"
               >
@@ -64,9 +72,12 @@
                   </template>
               </v-img>
             </v-col>
-            <v-col cols="6" align-center>
+            <v-col cols="12" md="6" align-center>
               <div class="flex column justify-center fill-height">
-                <div class="headline font-weight-bold">
+                <div
+                  class="headline font-weight-bold"
+                  :class="{'text-center': $vuetify.breakpoint.xs}"
+                >
                   O evento em uma palavra: <span class="primary--text">Impactante!</span>
                 </div>
                 <div class="mt-4 subtitle-1 text-justify">
@@ -85,9 +96,12 @@
       <v-scroll-x-reverse-transition>
         <v-col v-if="mounted" class="mt-5" cols="12">
           <v-row justify="space-between">
-            <v-col cols="6" align-center>
+            <v-col cols="12" md="6" align-center>
               <div class="flex column justify-center fill-height">
-                <div class="headline font-weight-bold">
+                <div
+                  class="headline font-weight-bold"
+                  :class="{'text-center': $vuetify.breakpoint.xs}"
+                >
                   O Repositório:
                   <span class="primary--text"> Preservando o conhecimento e a história.</span>
                 </div>
@@ -104,7 +118,7 @@
                 </div>
               </div>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="12" md="6">
               <div class="flex justify-end">
                 <v-img
                   width="400"
