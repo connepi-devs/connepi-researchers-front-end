@@ -6,18 +6,18 @@
           <v-btn
             dark
             color="white"
-            class="mr-2 primary--text"
+            class="primary--text"
             small
             @click="sidebar = !sidebar"
           >
             <v-icon left>mdi-menu</v-icon>
             Menu
           </v-btn>
-          <div class="flex justify-center font-weight-bold">
-            Repositório CONNEPI
-          </div>
         </div>
       </v-toolbar-content>
+      <div class="flex justify-center font-weight-bold toolbar-title">
+        <span>Repositório CONNEPI</span>
+      </div>
     </v-app-bar>
     <v-navigation-drawer
       v-model="sidebar"
@@ -115,13 +115,11 @@ export default {
 </script>
 
 <style scoped>
-  .toolbar-title {
-    margin-top: 64px;
-    color: white;
-    width: 100%;
-  }
   .app-content {
     margin: 50px 30px;
     max-width: 100%;
+  }
+  .toolbar-title {
+    max-width: calc(100% - 118px);
   }
 </style>
