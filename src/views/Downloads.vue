@@ -4,24 +4,29 @@
       Downloads
     </div>
     <v-row class="fill-height" align="start">
-      <v-card outlined width="100%">
-        <v-card-title class="title font-weight-bold primary white--text">
-          Anais das edições do CONNEPI
-        </v-card-title>
-        <v-card-text class="mt-5">
-          <v-data-table
-            :headers="headers"
-            :items="desserts"
-            :items-per-page="8"
+      <v-col cols="12">
+        <v-card outlined width="100%">
+          <v-card-title
+            class="title font-weight-bold primary white--text"
+            style="word-break: break-word"
           >
-            <template v-slot:item.file_url="{ item }">
-              <v-btn @click="download(item.file_url)" text small>
-                <v-icon>mdi-download</v-icon>
-              </v-btn>
-            </template>
-          </v-data-table>
-        </v-card-text>
-      </v-card>
+            Anais das edições do CONNEPI
+          </v-card-title>
+          <v-card-text class="mt-5">
+            <v-data-table
+              :headers="headers"
+              :items="desserts"
+              :items-per-page="8"
+            >
+              <template v-slot:item.file_url="{ item }">
+                <v-btn @click="download(item.file_url)" text small>
+                  <v-icon>mdi-download</v-icon>
+                </v-btn>
+              </template>
+            </v-data-table>
+          </v-card-text>
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
