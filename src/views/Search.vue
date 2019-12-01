@@ -1,8 +1,12 @@
 <template>
-  <v-container fill-height grid-list-lg>
-    <span class="headline font-weight-black section-title">Publicações</span>
-    <v-card width="100%">
-      <v-card-title class="font-weight-bold">Buscar Artigos</v-card-title>
+  <v-container grid-list-lg>
+    <div class="headline font-weight-black section-title">
+      Publicações
+    </div>
+    <v-card class="app-cards" outlined width="100%">
+      <v-card-title class="title font-weight-bold primary white--text">
+        Buscar Artigos
+      </v-card-title>
       <v-form @submit.prevent="searchArticle" ref="form" v-model="valid">
         <v-card-text>
           <v-row>
@@ -53,6 +57,7 @@
                 label="Filtrar por"
                 outlined
                 dense
+                @change="search = ''"
               />
             </v-col>
             <v-col cols="3">
@@ -81,6 +86,15 @@
                   Não foram encontradas publicações com o termo e filtro pesquisado
                 </span>
                 <publications-table v-if="results.length > 0 && !loading" :publications="results" />
+              </div>
+              <div class="flex justify-center subtitle-1">
+                <span>Encontrou alguma inconsistência? Fale conosco no email&nbsp;</span>
+                <a
+                  class="primary--text"
+                  href="mailto:connepirep@gmail.com"
+                >
+                  connepirep@gmail.com
+                </a>
               </div>
             </v-col>
           </v-row>

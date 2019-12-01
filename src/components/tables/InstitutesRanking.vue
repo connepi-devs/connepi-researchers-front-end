@@ -3,9 +3,9 @@
     <v-card-text>
       <v-container>
         <v-layout column>
-          <v-layout class="my-2" align-end>
+          <v-layout class="my-2" align-center>
             <v-icon class="mr-2">mdi-podium</v-icon>
-            <h2>TOP 5 Institutos</h2>
+            <h2 class="font-weight-bold title">TOP 5 Institutos</h2>
           </v-layout>
           <v-data-table
             :items="data"

@@ -1,38 +1,45 @@
 <template>
-  <v-app>
+  <v-app style="overflow: hidden">
     <v-navigation-drawer
       app
-      absolute
+      fixed
       dark
       color="primary darken-3"
       permanent
       height="100%"
+      src="@/assets/images/sidebar-background.png"
     >
       <v-list-item class="my-5" @click="$router.push({ name: 'Home' })">
         <v-list-item-content>
-          <v-list-item-title class="title font-weight-bold">
-            Repositório CONNEPI
+          <v-list-item-title class="font-weight-bold">
+            <v-avatar size="40" color="white">
+              <v-img src="@/assets/images/ifal-fav.png" />
+            </v-avatar>
+            <span class="ml-2" style="font-family: 'Raleway', sans-serif">
+              Repositório CONNEPI
+            </span>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list nav>
         <v-list-item
+          active-class="green darken-2"
           link
           v-for="({ label, icon, routeName }, i) in items"
           :key="i"
           :to="{name: routeName}"
         >
           <v-list-item-icon>
-            <v-icon>{{ icon }}</v-icon>
+            <v-icon color="white">{{ icon }}</v-icon>
           </v-list-item-icon>
 
-          <v-list-item-content>
+          <v-list-item-content class="white--text">
             <v-list-item-title>{{ label }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-content>
+    <v-content class="app-content">
       <router-view />
     </v-content>
     <snackbar />
@@ -73,5 +80,9 @@ export default {
     margin-top: 64px;
     color: white;
     width: 100%;
+  }
+  .app-content {
+    margin: 50px 30px;
+    max-width: 100%;
   }
 </style>

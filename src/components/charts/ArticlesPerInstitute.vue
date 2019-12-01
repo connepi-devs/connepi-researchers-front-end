@@ -3,7 +3,9 @@
     <v-card-text>
       <v-container>
         <v-layout column>
-          <h2 class="mt-2 mb-4">Total de artigos por IF</h2>
+          <h2 class="mt-2 mb-4 title font-weight-bold">
+            Total de artigos por IF
+          </h2>
           <ve-histogram :data="chart" />
         </v-layout>
       </v-container>
