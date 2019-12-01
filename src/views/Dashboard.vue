@@ -15,10 +15,10 @@
         <cards :cardsData="articlesPerYear" />
       </v-col>
       <!-- Charts and Tables -->
-      <v-col cols="6">
+      <v-col cols="12" lg="6">
         <articles-per-area :chartData="articlesPerArea" />
       </v-col>
-      <v-col cols="6">
+      <v-col cols="12" lg="6">
         <institutes-ranking :chartData="totalArticlesPerInstituteData" />
       </v-col>
       <v-col cols="12">
