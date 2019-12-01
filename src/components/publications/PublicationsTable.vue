@@ -10,6 +10,12 @@
           clearable
         />
       </v-col>
+      <v-col cols="12" v-if="$vuetify.breakpoint.xs">
+        <div class="flex mt-3 justify-center">
+          <strong>Total:&nbsp;</strong>
+          <span>{{ publications.length }} publicações encontradas</span>
+        </div>
+      </v-col>
       <v-col cols="12">
         <v-data-table
           :headers="headers"
@@ -29,16 +35,6 @@
           </template>
         </v-data-table>
       </v-col>
-      <div
-        class="flex mt-3"
-        :class="{
-          'justify-end': $vuetify.breakpoint.mdAndUp,
-          'justify-center': $vuetify.breakpoint.smAndDown
-        }"
-      >
-        <strong>Resultado:&nbsp;</strong>
-        <span>{{ publications.length }} publicações encontradas</span>
-      </div>
     </v-row>
 </template>
 
