@@ -39,7 +39,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-content style="overflow-y: scroll; max-height: 100vh; max-width: 100%">
+    <v-content class="app-content">
       <router-view />
     </v-content>
     <snackbar />
@@ -80,5 +80,9 @@ export default {
     margin-top: 64px;
     color: white;
     width: 100%;
+  }
+  .app-content {
+    margin: 50px 30px; 
+    max-width: 100%;
   }
 </style>
