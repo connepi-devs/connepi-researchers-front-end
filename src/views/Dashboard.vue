@@ -1,20 +1,14 @@
 <template>
   <v-container style="margin-top: -50px" grid-list-lg>
-    <v-dialog v-model="loading" fullscreen>
-      <v-card>
-        <v-card-text>
-          <div class="loader-container">
-            <v-progress-circular
-              class="mb-4"
-              indeterminate
-              color="primary"
-              size="100"
-            />
-            <span class="headline">Carregando dados...</span>
-          </div>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
+    <div v-if="loading" class="loader-container">
+      <v-progress-circular
+        class="mb-4"
+        indeterminate
+        color="primary"
+        size="100"
+      />
+      <span class="headline">Carregando dados...</span>
+    </div>
     <v-row wrap>
       <!-- Cards -->
       <v-col cols="12">
@@ -131,11 +125,15 @@ export default {
 
 <style scoped>
   .loader-container {
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: calc(100vh - 64px);
     width: 100%;
+    z-index: 9;
+    background: white;
+    height: 100%;
+    padding-top: 20%;
   }
 </style>
