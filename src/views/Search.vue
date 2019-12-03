@@ -92,11 +92,19 @@
                       v-if="results.length > 0 && !loading && $vuetify.breakpoint.smAndUp"
                       :publications="results"
                     />
-                    <publications-cards
-                      style="max-width: 100%"
+                    <div
+                      class="flex column align-center"
                       v-if="results.length > 0 && !loading && $vuetify.breakpoint.xs"
-                      :publications="results"
-                    />
+                    >
+                      <div class="flex justify-center mb-5">
+                        <strong>Resultado:&nbsp;</strong>
+                        {{ results.length }} publicações encontradas
+                      </div>
+                      <publications-cards
+                        style="max-width: 100%"
+                        :publications="results"
+                      />
+                    </div>
                   </div>
                   <div
                     class="flex justify-center subtitle-1 mt-3"
