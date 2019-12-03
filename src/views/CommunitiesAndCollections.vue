@@ -11,33 +11,36 @@
         <v-card-text class="mt-5">
           <v-expansion-panels focusable>
             <v-expansion-panel
-              v-for="(item,i) in 4"
-              :key="i"
+              v-for="(item, index) in areas"
+              :key="index"
             >
               <v-expansion-panel-header>
                 <div>
                   <v-icon class="mr-3">mdi-folder-multiple</v-icon>
-                  <span class="font-weight-bold">Connepi 200{{ i + 6 }}</span>
+                  <span class="font-weight-bold">Connepi {{ item.ano }}</span>
                 </div>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <v-list two-line subheader>
                   <v-list-item
-                    v-for="i in 5"
-                    :key="i"
+                    v-for="(total, area) in omit(item, ['ano'])"
+                    :key="area"
                     @click="showCollection"
                   >
-                    <v-list-item-avatar color="amber">
+                    <v-list-item-avatar
+                      v-if="$vuetify.breakpoint.smAndUp"
+                      color="amber"
+                    >
                       <v-icon color="white">mdi-folder</v-icon>
                     </v-list-item-avatar>
 
                     <v-list-item-content>
-                      <v-list-item-title>Ciências Exatas e da Terra (50)</v-list-item-title>
+                      <v-list-item-title>{{ area }} ({{ total }})</v-list-item-title>
                     </v-list-item-content>
 
                     <v-list-item-action>
                       <v-btn @click="showCollection" icon>
-                        <v-icon color="grey darken-2">mdi-eye</v-icon>
+                        <v-icon color="grey darken-2">mdi-download</v-icon>
                       </v-btn>
                     </v-list-item-action>
                   </v-list-item>
@@ -52,9 +55,24 @@
 </template>
 
 <script>
+import { omit, orderBy } from 'lodash';
+import dashboardService from '@/services/dashboard-service';
+
 export default {
   name: 'CommunitiesAndCollections',
+  created() {
+    dashboardService.getArticlesPerInstitutePerAreaPerYear('')
+      .then(({ data }) => {
+        this.areas = orderBy(data, ['ano']);
+      });
+  },
+  data() {
+    return {
+      areas: [],
+    };
+  },
   methods: {
+    omit,
     showCollection() {
       console.log('showCollection');
     },
