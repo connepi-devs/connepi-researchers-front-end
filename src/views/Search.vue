@@ -7,7 +7,7 @@
       <v-col cols="12">
         <v-card class="app-cards" outlined width="100%">
           <v-card-title class="title font-weight-bold primary white--text">
-            Buscar Artigos
+            Buscar Publicações
           </v-card-title>
           <v-form @submit.prevent="searchArticle" ref="form" v-model="valid">
             <v-card-text>
