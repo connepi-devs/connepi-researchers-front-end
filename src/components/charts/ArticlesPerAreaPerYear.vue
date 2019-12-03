@@ -7,7 +7,7 @@
             class="mt-2 mb-4 title font-weight-bold"
             :class="{'text-center': $vuetify.breakpoint.xs}"
           >
-            Total de artigos por área por ano
+            Total de publicações por área por ano
           </h2>
           <ve-line
             :data="chart"

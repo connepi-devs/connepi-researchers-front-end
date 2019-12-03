@@ -5,7 +5,7 @@
         <v-layout column>
           <v-layout class="my-2" align-center>
             <v-icon class="mr-2">mdi-test-tube</v-icon>
-            <h2 class="title font-weight-bold">Total de artigos por Área</h2>
+            <h2 class="title font-weight-bold">Total de publicações por Área</h2>
           </v-layout>
           <ve-ring
             :data="chart"

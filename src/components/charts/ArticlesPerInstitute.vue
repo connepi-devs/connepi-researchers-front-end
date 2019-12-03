@@ -7,7 +7,7 @@
             class="mt-2 mb-4 title font-weight-bold"
             :class="{'text-center': $vuetify.breakpoint.xs}"
           >
-            Total de artigos por IF
+            Total de publicações por IF
           </h2>
           <ve-bar
             height="600px"

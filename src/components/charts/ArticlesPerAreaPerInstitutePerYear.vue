@@ -12,7 +12,7 @@
               class="font-weight-bold title"
               :class="{'text-center': $vuetify.breakpoint.xs}"
             >
-              Total de artigos por área por IF por ano
+              Total de publicações por área por IF por ano
             </h2>
           </v-col>
             <v-spacer />
