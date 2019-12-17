@@ -41,9 +41,17 @@
                       </v-list-item-content>
 
                       <v-list-item-action>
-                        <v-btn @click="showCollection" icon>
+                        <!-- <v-btn @click="showCollection" icon>
                           <v-icon color="grey darken-2">mdi-download</v-icon>
-                        </v-btn>
+                        </v-btn> -->
+                        <v-tooltip top>
+                          <template v-slot:activator="{ on }">
+                            <v-btn v-on="on" @click="download(item)" text small>
+                              <v-icon>mdi-download-off</v-icon>
+                            </v-btn>
+                          </template>
+                          <span>Download indisponível</span>
+                        </v-tooltip>
                       </v-list-item-action>
                     </v-list-item>
                   </v-list>
