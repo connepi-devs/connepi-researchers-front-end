@@ -21,7 +21,7 @@
               :items-per-page="8"
             >
               <template v-slot:item.file_url="{ item }">
-                <v-btn @click="download(item.file)" text small>
+                <v-btn @click="download(item)" text small>
                   <v-icon>mdi-download</v-icon>
                 </v-btn>
               </template>
@@ -31,7 +31,7 @@
                 class="mb-4"
                 v-for="row in rows"
                 :key="row.id"
-                @click="download(row.file)"
+                @click="download(row)"
               >
                 <v-card-title
                   class="primary darken-2 white--text"
@@ -62,6 +62,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import fs from 'file-saver';
 import eventsService from '@/services/events-service';
 import handleErrors from '@/utils/handle-errors';
 
@@ -106,8 +107,8 @@ export default {
           this.loading = false;
         });
     },
-    download(url) {
-      window.open(url, '_blank');
+    download(event) {
+      fs.saveAs(event.file, `${event.name}.zip`);
     },
   },
 };
