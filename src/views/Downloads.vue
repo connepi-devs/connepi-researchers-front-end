@@ -62,6 +62,17 @@
                       <strong>Ano:&nbsp;</strong>
                       <span>{{ row.year }}</span>
                     </div>
+                    <div class="flex py-1">
+                      <strong>Download:&nbsp;</strong>
+                      <a
+                        v-if="row.file !== null"
+                        class="blue--text"
+                        :href="row.file"
+                      >
+                        Baixar
+                      </a>
+                      <span v-else>Indisponível</span>
+                    </div>
                   </div>
                 </v-card-text>
               </v-card>
