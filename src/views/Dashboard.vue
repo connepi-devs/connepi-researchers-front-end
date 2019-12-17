@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import ArticlesPerArea from '@/components/charts/ArticlesPerArea.vue';
 import ArticlesPerInstitute from '@/components/charts/ArticlesPerInstitute.vue';
 import ArticlesPerAreaPerInstitutePerYear from '@/components/charts/ArticlesPerAreaPerInstitutePerYear.vue';
@@ -74,6 +75,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions('base', ['setSnackbar']),
     getDashboardData() {
       this.loading = true;
 
