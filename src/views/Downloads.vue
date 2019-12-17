@@ -21,9 +21,22 @@
               :items-per-page="8"
             >
               <template v-slot:item.file_url="{ item }">
-                <v-btn @click="download(item)" text small>
-                  <v-icon>mdi-download</v-icon>
-                </v-btn>
+                <v-tooltip v-if="item.file !== null" top>
+                  <template v-slot:activator="{ on }">
+                    <v-btn v-on="on" @click="download(item)" text small>
+                      <v-icon>mdi-download</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Baixar</span>
+                </v-tooltip>
+                <v-tooltip v-else top>
+                  <template v-slot:activator="{ on }">
+                    <v-btn v-on="on" @click="download(item)" text small>
+                      <v-icon>mdi-download-off</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Download indisponível</span>
+                </v-tooltip>
               </template>
             </v-data-table>
             <template v-if="$vuetify.breakpoint.xs">
@@ -61,8 +74,8 @@
 </template>
 
 <script>
+import { orderBy } from 'lodash';
 import { mapActions } from 'vuex';
-import fs from 'file-saver';
 import eventsService from '@/services/events-service';
 import handleErrors from '@/utils/handle-errors';
 
@@ -94,7 +107,7 @@ export default {
       this.loading = true;
       eventsService.get()
         .then(({ data }) => {
-          this.rows = data;
+          this.rows = orderBy(data, ['year']);
         })
         .catch((err) => {
           this.setSnackbar({
