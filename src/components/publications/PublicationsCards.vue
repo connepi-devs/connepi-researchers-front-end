@@ -5,7 +5,7 @@
       v-for="publication in publications"
       :key="publication.id"
     >
-      <v-card @click="show">
+      <v-card @click="show(publication)">
         <v-card-title
           class="primary darken-2 white--text"
           style="word-break: break-word"
@@ -43,8 +43,11 @@ export default {
     },
   },
   methods: {
-    show() {
-      //
+    show(publication) {
+      if (publication.file_url !== null) {
+        const route = this.$router.resolve({ path: `/publications/${publication.id}` });
+        window.open(route.href, '_blank');
+      }
     },
   },
 };
