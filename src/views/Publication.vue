@@ -2,7 +2,7 @@
   <v-container grid-list-lg>
     <v-row justify="center">
       <v-col cols="12">
-        <v-card width="100%" height="88vh">
+        <v-card width="100%" height="100%">
           <v-card-title class="font-weight-bold primary white--text">
             <span>Visualização da Publicação</span>
           </v-card-title>
@@ -44,7 +44,7 @@
                 class="mt-5"
                 :src="fileUrl"
                 width="100%"
-                :height="$vuetify.breakpoint.xs ? '100%' : 480"
+                :height="$vuetify.breakpoint.mdAndDown ? '300px' : '480px'"
                 @load="loading = false"
               />
             </div>
