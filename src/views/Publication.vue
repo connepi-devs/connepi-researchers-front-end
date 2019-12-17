@@ -44,7 +44,7 @@
                 class="mt-5"
                 :src="fileUrl"
                 width="100%"
-                height="480"
+                :height="$vuetify.breakpoint.xs ? '100%' : 480"
                 @load="loading = false"
               />
             </div>
