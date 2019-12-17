@@ -88,7 +88,7 @@ export default {
       this.loading = true;
       const formData = new FormData();
       formData.append('file', this.file);
-      console.log('upload function', formData);
+      // console.log('upload function', formData);
       setTimeout(() => {
         this.loading = false;
       }, 3000);

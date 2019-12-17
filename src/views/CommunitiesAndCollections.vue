@@ -77,7 +77,7 @@ export default {
   methods: {
     omit,
     showCollection() {
-      console.log('showCollection');
+      // console.log('showCollection');
     },
   },
 };
