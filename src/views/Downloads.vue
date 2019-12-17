@@ -14,23 +14,24 @@
           </v-card-title>
           <v-card-text class="mt-5">
             <v-data-table
+              :loading="loading"
               v-if="$vuetify.breakpoint.smAndUp"
               :headers="headers"
               :items="rows"
               :items-per-page="8"
             >
               <template v-slot:item.file_url="{ item }">
-                <v-btn @click="download(item.file_url)" text small>
+                <v-btn @click="download(item.file)" text small>
                   <v-icon>mdi-download</v-icon>
                 </v-btn>
               </template>
             </v-data-table>
             <template v-if="$vuetify.breakpoint.xs">
               <v-card
-                @click="download"
                 class="mb-4"
                 v-for="row in rows"
                 :key="row.id"
+                @click="download(row.file)"
               >
                 <v-card-title
                   class="primary darken-2 white--text"
@@ -60,8 +61,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import eventsService from '@/services/events-service';
+import handleErrors from '@/utils/handle-errors';
+
 export default {
   name: 'Downloads',
+  created() {
+    this.getAnais();
+  },
   data() {
     return {
       headers: [
@@ -75,71 +83,29 @@ export default {
         { text: 'Ano', value: 'year' },
         { text: 'Download', value: 'file_url' },
       ],
-      rows: [
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'RIO GRANDE DO NORTE',
-          year: 2006,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'PARAÍBA',
-          year: 2007,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'CEARÁ',
-          year: 2008,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'ALAGOAS',
-          year: 2010,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'RIO GRANDE DO NORTE',
-          year: 2011,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'TOCANTINS',
-          year: 2012,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'BAHIA',
-          year: 2013,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'MARANHÃO',
-          year: 2014,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'ACRE',
-          year: 2015,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-        {
-          name: 'CONNEPI - Congresso Norte-Nordeste de Pesquisa e Inovação',
-          state: 'ALAGOAS',
-          year: 2016,
-          file_url: 'https://bitcoin.org/files/bitcoin-paper/bitcoin_pt_br.pdf',
-        },
-      ],
+      rows: [],
+      loading: false,
     };
   },
   methods: {
+    ...mapActions('base', ['setSnackbar']),
+    getAnais() {
+      this.loading = true;
+      eventsService.get()
+        .then(({ data }) => {
+          this.rows = data;
+        })
+        .catch((err) => {
+          this.setSnackbar({
+            color: 'error',
+            message: handleErrors(err),
+            show: true,
+          });
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
     download(url) {
       window.open(url, '_blank');
     },
