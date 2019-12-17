@@ -61,12 +61,12 @@ const router = new Router({
       component: Downloads,
     },
     {
-      path: '/search',
+      path: '/publications',
       name: 'Search',
       component: Search,
     },
     {
-      path: '/publication/:id',
+      path: '/publications/:id',
       props: true,
       name: 'Publication',
       component: Publication,
