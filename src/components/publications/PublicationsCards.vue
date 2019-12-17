@@ -26,6 +26,13 @@
               <strong>Ano:&nbsp;</strong>
               <span>{{ publication.ano }}</span>
             </div>
+            <div class="flex py-2">
+              <strong>Visualizar:&nbsp;</strong>
+              <a class="blue--text" v-if="publication.file_url !== null">
+                Link
+              </a>
+              <span v-else>Arquivo indisponível</span>
+            </div>
           </div>
         </v-card-text>
       </v-card>
