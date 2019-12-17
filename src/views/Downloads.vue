@@ -108,7 +108,9 @@ export default {
         });
     },
     download(event) {
-      fs.saveAs(event.file, `${event.name}.zip`);
+      if (event.file !== null) {
+        window.open(`https://connepi-api.herokuapp.com/${event.file}`);
+      }
     },
   },
 };
