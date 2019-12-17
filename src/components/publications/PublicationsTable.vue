@@ -29,9 +29,22 @@
           no-data-text="Sem resultados para a filtragem realizada"
         >
           <template v-slot:item.file_url="{ item }">
-            <v-btn text small>
-              <v-icon>mdi-eye</v-icon>
-            </v-btn>
+            <v-tooltip v-if="item.file_url !== null" top>
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" @click="show(item)" text small>
+                  <v-icon>mdi-eye</v-icon>
+                </v-btn>
+              </template>
+              <span>Visualizar publicação</span>
+            </v-tooltip>
+            <v-tooltip top v-else>
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" @click="show(item)" text small>
+                  <v-icon>mdi-eye-off</v-icon>
+                </v-btn>
+              </template>
+              <span>A publicação não possui link de visualização</span>
+            </v-tooltip>
           </template>
         </v-data-table>
       </v-col>
@@ -64,6 +77,12 @@ export default {
       ],
       search: '',
     };
+  },
+  methods: {
+    show(publication) {
+      const route = this.$router.resolve({ path: `/publications/${publication.id}` });
+      window.open(route.href, '_blank');
+    },
   },
 };
 </script>
